@@ -14,21 +14,21 @@
     };
 
     desc('Minify the source code for deployment.');
-    task('minify', function () {
+    task('minify', [ 'prepare', 'lint', 'test' ], function () {
         runTask(minify, 'Minifying...');
     }, {
         async: true
     });
 
     desc('Run the unit tests.');
-    task('test', function () {
+    task('test', [ 'prepare' ], function () {
         runTask(test, 'Testing...');
     }, {
         async: true
     });
 
     desc('Lint the source code.');
-    task('lint', function () {
+    task('lint', [ 'prepare' ], function () {
         runTask(lint, 'Linting...');
     }, {
         async: true
