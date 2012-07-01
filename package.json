@@ -1,6 +1,6 @@
 {
     "name": "vague-time",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "author": "Phil Booth <pmbooth@gmail.com>",
     "description": "function to return a time difference as a vague time, e.g. '1 hour ago'",
     "contributors": {
