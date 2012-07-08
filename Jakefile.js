@@ -7,7 +7,7 @@
     var exec = require('child_process').exec,
 
     commands = {
-        minify: './node_modules/.bin/uglifyjs --lift-vars --output ./src/vagueTime.min.js ./src/vagueTime.js',
+        minify: './node_modules/.bin/uglifyjs --no-copyright --lift-vars --output ./src/vagueTime.min.js ./src/vagueTime.js',
         test: './node_modules/.bin/mocha --ui tdd --reporter spec --colors --slow 10 ./test/vagueTime.js',
         lint: './node_modules/.bin/jshint ./src/vagueTime.js --config config/jshint.json',
         prepare: 'npm install'
