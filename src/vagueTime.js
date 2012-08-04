@@ -38,7 +38,7 @@
         var times = getTimes(timestamp, referenceTimestamp);
 
         if (times.difference >= constants.year) {
-            return getTimeDifferenceAsYears(times.difference);
+            return getTimeDifferenceAsYearsAndMonths(times.difference);
         }
 
         if (times.difference >= constants.month) {
@@ -46,7 +46,7 @@
         }
 
         if (times.difference >= constants.week) {
-            return getTimeDifferenceAsWeeksAndDays(times.difference);
+            return getTimeDifferenceAsWeeks(times.difference);
         }
 
         if (times.difference >= constants.day) {
@@ -81,20 +81,20 @@
         return time;
     }
 
+    function getTimeDifferenceAsYearsAndMonths (difference) {
+        if (difference % constants.year === 0) {
+            return getTimeDifferenceAsYears(difference);
+        }
+
+        return getTimeDifferenceAsMixedUnits(difference, constants.year, 'year', constants.month, 'month');
+    }
+
     function getTimeDifferenceAsYears (difference) {
         return getTimeDifferenceAsUnits(difference, constants.year, 'year');
     }
 
     function getTimeDifferenceAsMonths (difference) {
         return getTimeDifferenceAsUnits(difference, constants.month, 'month');
-    }
-
-    function getTimeDifferenceAsWeeksAndDays (difference) {
-        if (difference % constants.week === 0) {
-            return getTimeDifferenceAsWeeks(difference);
-        }
-
-        return getTimeDifferenceAsMixedUnits(difference, constants.week, 'week', constants.day, 'day');
     }
 
     function getTimeDifferenceAsWeeks (difference) {
@@ -113,14 +113,14 @@
         return getTimeDifferenceAsUnits(difference, constants.minute, 'minute');
     }
 
-    function getTimeDifferenceAsUnits (differenceAsMilliseconds, unitAsMilliseconds, unitName) {
-        var units = Math.floor(differenceAsMilliseconds / unitAsMilliseconds);
+    function getTimeDifferenceAsUnits (differenceInMs, unitInMs, unitName) {
+        var units = Math.floor(differenceInMs / unitInMs);
         return units + ' ' + pluraliseNoun(units, unitName) + ' ago';
     }
 
-    function getTimeDifferenceAsMixedUnits (differenceAsMilliseconds, firstUnitAsMilliseconds, firstUnitName, secondUnitAsMilliseconds, secondUnitName) {
-        var firstUnits = Math.floor(differenceAsMilliseconds / firstUnitAsMilliseconds),
-            secondUnits = Math.floor(differenceAsMilliseconds % firstUnitAsMilliseconds / secondUnitAsMilliseconds);
+    function getTimeDifferenceAsMixedUnits (differenceInMs, firstUnitInMs, firstUnitName, secondUnitInMs, secondUnitName) {
+        var firstUnits = Math.floor(differenceInMs / firstUnitInMs),
+            secondUnits = Math.floor(differenceInMs % firstUnitInMs / secondUnitInMs);
         return firstUnits + ' ' + pluraliseNoun(firstUnits, firstUnitName) + ' and ' +
             secondUnits + ' ' + pluraliseNoun(secondUnits, secondUnitName) + ' ago';
     }

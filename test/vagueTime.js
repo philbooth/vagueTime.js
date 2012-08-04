@@ -67,8 +67,8 @@
                 assert.strictEqual(vagueTime.get('1233963090', '1234567890'), '1 week ago');
             });
 
-            test('get returns 4 weeks and 2 days ago when time is 2,629,799 seconds ago', function () {
-                assert.strictEqual(vagueTime.get('1231938091', '1234567890'), '4 weeks and 2 days ago');
+            test('get returns 4 weeks ago when time is 2,629,799 seconds ago', function () {
+                assert.strictEqual(vagueTime.get('1231938091', '1234567890'), '4 weeks ago');
             });
 
             test('get returns 1 month ago when time is 2,629,800 seconds ago', function () {
@@ -85,6 +85,10 @@
 
             test('get returns 2 years ago when time is 63,115,200 seconds ago', function () {
                 assert.strictEqual(vagueTime.get('1171452690', '1234567890'), '2 years ago');
+            });
+
+            test('get returns 1 year and 11 months ago when time is 63,115,199 seconds ago', function () {
+                assert.strictEqual(vagueTime.get('1171452691', '1234567890'), '1 year and 11 months ago');
             });
 
             test('get accepts numeric arguments', function () {
