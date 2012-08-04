@@ -17,7 +17,7 @@
         minute: 60000 // 1000 ms * 60 s
     };
 
-    exports.getVagueTime = getVagueTime;
+    exports.get = getVagueTime;
 
     /**
      * Public function `vagueTime.get`.
