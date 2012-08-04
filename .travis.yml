@@ -1,10 +1,7 @@
 language: node_js
 node_js:
-  - 0.8
-  - 0.6
-
-script: './node_modules/.bin/jake -f ./jakefile.coffee ci'
-
+  - "0.8"
+  - "0.6"
 branches:
   only:
     - master
