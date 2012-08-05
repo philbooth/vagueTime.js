@@ -14,14 +14,14 @@ the raw source (`src/vagueTime.js`, *4.4 kb*) or
 minified version (`src/vagueTime.min.js` *1.1 kb*).
 
 To use the code in a browser environment, use [OneJS]
-or [Browserfiy]
+or [Browserify]
 
 ## Usage
 
 vagueTime.js exports a single public function, `get`,
 which returns a vague time string, such as 'just now'
 or '3 months ago', based on the timestamp argument(s)
-it is passed.
+that you pass it.
 
 The first argument is a number representing the timestamp
 in seconds that is to be converted into a vague time. The
