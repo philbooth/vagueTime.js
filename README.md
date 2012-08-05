@@ -13,8 +13,8 @@ Import the module using `require`, referencing either
 the raw source (`src/vagueTime.js`, *4.4 kb*) or
 minified version (`src/vagueTime.min.js` *1.1 kb*).
 
-To use the code in a browser environment, use [OneJS]
-or [Browserify]
+To call the library in a browser environment, use [OneJS]
+or [Browserify].
 
 ## Usage
 
