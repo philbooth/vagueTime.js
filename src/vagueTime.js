@@ -1,6 +1,6 @@
 /**
  * This module contains functionality that allows a precise timestamp
- * to be converted to a vague time, e.g. 'an hour ago'.
+ * to be converted to a vague time, e.g. 'just now' or '3 weeks ago'.
  */
 
  /*globals exports */
@@ -22,10 +22,10 @@
     /**
      * Public function `vagueTime.get`.
      *
-     * Returns a vague time, such as 'an hour ago', based on
-     * a precise timestamp and an optional reference timestamp.
-     * If the reference timestamp is not provided, `Date.now()`
-     * is used instead.
+     * Returns a vague time, such as 'just now' or '3 weeks ago',
+     * based on a precise timestamp and an optional reference
+     * timestamp. If the reference timestamp is not provided,
+     * a default value of `Date.now()` is used instead.
      *
      * @param timestamp {number}           The timestamp to convert,
      *                                     in seconds.
