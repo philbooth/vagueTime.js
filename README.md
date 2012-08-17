@@ -16,7 +16,7 @@ the raw source (`src/vagueTime.js`, *4.4 kb*) or
 minified version (`src/vagueTime.min.js` *1.1 kb*).
 
 To call the library in a browser environment, use [OneJS],
-[Browserify] or [EnderJS].
+[Browserify] or [Ender].
 
 vagueTime.js exports a single public function, `get`,
 which returns a vague time string, such as 'just now'
@@ -58,7 +58,7 @@ with the command `npm test` or `jake test`.
 [ci-status]: http://travis-ci.org/#!/philbooth/vagueTime.js
 [onejs]: https://github.com/azer/onejs
 [browserify]: https://github.com/substack/node-browserify
-[enderjs]: http://ender.no.de/
+[ender]: http://ender.no.de/
 [node]: http://nodejs.org/
 [npm]: https://npmjs.org/
 [jake]: https://github.com/mde/jake
