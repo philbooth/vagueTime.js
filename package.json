@@ -16,7 +16,7 @@
         "time",
         "date"
     ],
-    "dependencies": {
+    "devDependencies": {
         "jake": "0.3.x",
         "jshint": "0.7.x",
         "mocha": "1.2.x",
