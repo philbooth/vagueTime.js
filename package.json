@@ -1,6 +1,6 @@
 {
     "name": "vague-time",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "author": "Phil Booth <pmbooth@gmail.com>",
     "description": "a small javascript library for formatting time differences as a vague time, e.g. 'just now' or '3 months ago'",
     "contributors": {
