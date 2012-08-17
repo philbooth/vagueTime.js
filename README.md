@@ -11,9 +11,7 @@ a vague time, e.g. 'just now' or '3 months ago'.
 
 ## Usage
 
-Import the module using `require`, referencing either
-the raw source (`src/vagueTime.js`, *4.4 kb*) or
-minified version (`src/vagueTime.min.js` *1.1 kb*).
+`var vagueTime = require('vague-time');`
 
 To call the library in a browser environment, use [OneJS],
 [Browserify] or [Ender].
