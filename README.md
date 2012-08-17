@@ -1,7 +1,7 @@
 # vagueTime.js
 
 A small javascript library for formatting time differences as
-a vague time, e.g. '1 hour ago'.
+a vague time, e.g. 'just now' or '3 months ago'.
 
 [![Build status][ci-image]][ci-status]
 
