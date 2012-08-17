@@ -14,8 +14,10 @@
     },
     "keywords": [
         "time",
-        "date"
+        "date",
+        "ender"
     ],
+    "ender": "noop",
     "devDependencies": {
         "jake": "0.3.x",
         "jshint": "0.7.x",
