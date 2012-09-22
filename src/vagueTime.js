@@ -8,7 +8,7 @@
 (function () {
     'use strict';
 
-    var constants = {
+    var times = {
         year: 31557600000, // 1000 ms * 60 s * 60 m * 24 h * 365.25 d
         month: 2629800000, // 31557600000 ms / 12 m
         week: 604800000, // 1000 ms * 60 s * 60 m * 24 h * 7 d
@@ -27,105 +27,70 @@
      * timestamp. If the reference timestamp is not provided,
      * a default value of `Date.now()` is used instead.
      *
-     * @param timestamp {number}           The timestamp to convert,
-     *                                     in seconds.
-     * @param [referenceTimesamp] {number} The optional reference
-     *                                     timestamp from which to
-     *                                     calculate the vague time
-     *                                     (defaults to `Date.now()`.
+     * @param from {number}    The timestamp to convert, in seconds.
+     * @param [until] {number} The optional reference timestamp from
+     *                         which to calculate the vague time,
+     *                         defaults to `Date.now()`.
+     * @param [units] {string} The units the timestamps are measured
+     *                         in, either 's' for seconds or 'ms' for
+     *                         milliseconds.
      */
-    function getVagueTime (timestamp, referenceTimestamp) {
-        var times = getTimes(timestamp, referenceTimestamp);
+    function getVagueTime (options) {
+        var units = normaliseUnits(options.units),
+            from = normaliseTimestamp(options.from, units),
+            until = normaliseTimestamp(options.until, units, Date.now()),
+            difference, time, vagueTime;
 
-        if (times.difference >= constants.year) {
-            return getTimeDifferenceAsYearsAndMonths(times.difference);
-        }
+        difference = until - from;
 
-        if (times.difference >= constants.month) {
-            return getTimeDifferenceAsMonths(times.difference);
-        }
-
-        if (times.difference >= constants.week) {
-            return getTimeDifferenceAsWeeks(times.difference);
-        }
-
-        if (times.difference >= constants.day) {
-            return getTimeDifferenceAsDays(times.difference);
-        }
-
-        if (times.difference >= constants.hour) {
-            return getTimeDifferenceAsHours(times.difference);
-        }
-
-        if (times.difference >= constants.minute) {
-            return getTimeDifferenceAsMinutes(times.difference);
+        for (time in times) {
+            if (
+                times.hasOwnProperty(time) &&
+                difference >= times[time]
+            ) {
+                vagueTime = Math.floor(difference / times[time]);
+                return vagueTime + ' ' + pluraliseNoun(time, vagueTime) + ' ago';
+            }
         }
 
         return 'just now';
     }
 
-    function getTimes (timestamp, referenceTimestamp) {
-        var times = {
-            then: getTime(timestamp + '000'),
-            now: referenceTimestamp ? getTime(referenceTimestamp + '000') : getTime(Date.now())
-        };
+    function normaliseUnits (units) {
+        if (typeof units === 'undefined') {
+            return 's';
+        }
 
-        times.difference = times.now.getTime() - times.then.getTime();
+        if (units !== 's' && units !== 'ms') {
+            throw new Error('Invalid units');
+        }
 
-        return times;
+        return units;
     }
 
-    function getTime (timestamp) {
-        var time = new Date();
-        time.setTime(timestamp);
+    function normaliseTimestamp (time, units, defaultTime) {
+        var type = typeof time;
+
+        if (type === 'undefined' && typeof defaultTime === 'number') {
+            return defaultTime;
+        }
+
+        if (type === 'string') {
+            time = parseInt(time, 10);
+        }
+
+        if (type !== 'number' || isNaN(time)) {
+            throw new Error('Invalid timestamp');
+        }
+
+        if (units === 's') {
+            return time * 1000;
+        }
+
         return time;
     }
 
-    function getTimeDifferenceAsYearsAndMonths (difference) {
-        if (difference % constants.year === 0) {
-            return getTimeDifferenceAsYears(difference);
-        }
-
-        return getTimeDifferenceAsMixedUnits(difference, constants.year, 'year', constants.month, 'month');
-    }
-
-    function getTimeDifferenceAsYears (difference) {
-        return getTimeDifferenceAsUnits(difference, constants.year, 'year');
-    }
-
-    function getTimeDifferenceAsMonths (difference) {
-        return getTimeDifferenceAsUnits(difference, constants.month, 'month');
-    }
-
-    function getTimeDifferenceAsWeeks (difference) {
-        return getTimeDifferenceAsUnits(difference, constants.week, 'week');
-    }
-
-    function getTimeDifferenceAsDays (difference) {
-        return getTimeDifferenceAsUnits(difference, constants.day, 'day');
-    }
-
-    function getTimeDifferenceAsHours (difference) {
-        return getTimeDifferenceAsUnits(difference, constants.hour, 'hour');
-    }
-
-    function getTimeDifferenceAsMinutes (difference) {
-        return getTimeDifferenceAsUnits(difference, constants.minute, 'minute');
-    }
-
-    function getTimeDifferenceAsUnits (differenceInMs, unitInMs, unitName) {
-        var units = Math.floor(differenceInMs / unitInMs);
-        return units + ' ' + pluraliseNoun(units, unitName) + ' ago';
-    }
-
-    function getTimeDifferenceAsMixedUnits (differenceInMs, firstUnitInMs, firstUnitName, secondUnitInMs, secondUnitName) {
-        var firstUnits = Math.floor(differenceInMs / firstUnitInMs),
-            secondUnits = Math.floor(differenceInMs % firstUnitInMs / secondUnitInMs);
-        return firstUnits + ' ' + pluraliseNoun(firstUnits, firstUnitName) + ' and ' +
-            secondUnits + ' ' + pluraliseNoun(secondUnits, secondUnitName) + ' ago';
-    }
-
-    function pluraliseNoun (amount, noun) {
+    function pluraliseNoun (noun, amount) {
         return noun + (amount > 1 ? 's' : '');
     }
 }());
