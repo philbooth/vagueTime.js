@@ -48,8 +48,8 @@ you would like to convert to a vague time. The optional property
 want to calculate the vague time difference, or it defaults to
 `Date.now()` if undefined. The optional property `units` is a
 string denoting the units that the `from` and `until` timestamps
-are specified in, either 's' for seconds or 'ms' for milliseconds,
-defaulting to 's' if undefined.
+are specified in, either `'s'` for seconds or `'ms'` for milliseconds,
+defaulting to `'s'` if undefined.
 
 ### Examples
 
