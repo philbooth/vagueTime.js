@@ -7,14 +7,35 @@ time, e.g. 'just now' or '3 months ago'.
 
 ## Installation
 
-`npm install vague-time`
+### Node.js
+
+```
+npm install vague-time
+```
+
+### Browser
+
+```
+git clone git@github.com:philbooth/vagueTime.js.git
+```
 
 ## Usage
 
-`var vagueTime = require('vague-time');`
+### Loading the library
 
-To call the library in a browser environment, use [OneJS],
-[Browserify] or [Ender].
+#### Node.js
+
+```
+var vagueTime = require('vague-time');
+```
+
+#### Browser
+
+```
+<script type="text/javascript" src=".../vagueTime/src/vagueTime.min.js"></script>
+```
+
+### Calling the library
 
 vagueTime.js exports a single public function, `get`, which returns
 a vague time string, such as 'just now' or '3 months ago', based on
@@ -42,8 +63,8 @@ vagueTime.get({
     until: 1234567890
 }); // returns '4 weeks ago'
 vagueTime.get({
-    from: 1234567890,
-    until: 1234567890
+    from: Date.now(),
+    units: 'ms'
 }); // returns 'just now'
 ```
 
