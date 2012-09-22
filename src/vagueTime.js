@@ -33,7 +33,7 @@
      *                         defaults to `Date.now()`.
      * @param [units] {string} The units the timestamps are measured
      *                         in, either 's' for seconds or 'ms' for
-     *                         milliseconds.
+     *                         milliseconds, defaults to 's'.
      */
     function getVagueTime (options) {
         var units = normaliseUnits(options.units),
