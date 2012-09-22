@@ -3,7 +3,7 @@
  * to be converted to a vague time, e.g. 'just now' or '3 weeks ago'.
  */
 
- /*globals exports */
+ /*globals exports, window */
 
 (function () {
     'use strict';
@@ -17,7 +17,13 @@
         minute: 60000 // 1000 ms * 60 s
     };
 
-    exports.get = getVagueTime;
+    if (typeof exports === 'undefined') {
+        window.vagueTime = {
+            get: getVagueTime
+        };
+    } else {
+        exports.get = getVagueTime;
+    }
 
     /**
      * Public function `get`.
