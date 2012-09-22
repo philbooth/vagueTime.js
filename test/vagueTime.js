@@ -292,6 +292,20 @@
                     units: 's'
                 }), 'just now');
             });
+
+            test('until defaults to now', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: Date.now(),
+                    units: 'ms'
+                }), 'just now');
+            });
+
+            test('units defaults to seconds', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 0,
+                    until: 60,
+                }), '1 minute ago');
+            });
         });
     });
 }());
