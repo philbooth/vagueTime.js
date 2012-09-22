@@ -32,9 +32,18 @@ are specified in, either 's' for seconds or 'ms' for milliseconds.
 ### Examples
 
 ```
-vagueTime.get('1171452690', '1234567890'); // returns '2 years ago'
-vagueTime.get('1231938091', '1234567890'); // returns '4 weeks ago'
-vagueTime.get('1234567890', '1234567890'); // returns 'just now'
+vagueTime.get({
+    from: 1171452690,
+    until: 1234567890
+}); // returns '2 years ago'
+vagueTime.get({
+    from: 1231938091,
+    until: 1234567890
+}); // returns '4 weeks ago'
+vagueTime.get({
+    from: 1234567890,
+    until: 1234567890
+}); // returns 'just now'
 ```
 
 ## Development
@@ -59,8 +68,8 @@ command `npm test` or `jake test`.
 [node]: http://nodejs.org/
 [npm]: https://npmjs.org/
 [jake]: https://github.com/mde/jake
+[jshint]: https://github.com/jshint/node-jshint
 [mocha]: http://visionmedia.github.com/mocha
 [chai]: http://chaijs.com/
-[jshint]: https://github.com/jshint/node-jshint
 [uglifyjs]: https://github.com/mishoo/UglifyJS
 
