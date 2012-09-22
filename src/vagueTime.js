@@ -20,7 +20,7 @@
     exports.get = getVagueTime;
 
     /**
-     * Public function `vagueTime.get`.
+     * Public function `get`.
      *
      * Returns a vague time, such as 'just now' or '3 weeks ago',
      * based on a precise timestamp and an optional reference
@@ -69,17 +69,15 @@
     }
 
     function normaliseTimestamp (time, units, defaultTime) {
-        var type = typeof time;
-
-        if (type === 'undefined' && typeof defaultTime === 'number') {
+        if (typeof time === 'undefined' && typeof defaultTime === 'number') {
             return defaultTime;
         }
 
-        if (type === 'string') {
+        if (typeof time === 'string') {
             time = parseInt(time, 10);
         }
 
-        if (type !== 'number' || isNaN(time)) {
+        if (typeof time !== 'number' || isNaN(time)) {
             throw new Error('Invalid timestamp');
         }
 

@@ -277,13 +277,13 @@
                 }), '2 years ago');
             });
 
-            //test('get accepts string arguments', function () {
-            //    assert.strictEqual(vagueTime.get({
-            //        from: '1234567890',
-            //        until: '1234567890',
-            //        units: 's'
-            //    }), 'just now');
-            //});
+            test('get accepts string arguments', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: '1234567890',
+                    until: '1234567890',
+                    units: 's'
+                }), 'just now');
+            });
 
             test('get returns just now when time difference is negative', function () {
                 assert.strictEqual(vagueTime.get({
