@@ -50,10 +50,7 @@
         difference = until - from;
 
         for (time in times) {
-            if (
-                times.hasOwnProperty(time) &&
-                difference >= times[time]
-            ) {
+            if (times.hasOwnProperty(time) && difference >= times[time]) {
                 vagueTime = Math.floor(difference / times[time]);
                 return vagueTime + ' ' + pluraliseNoun(time, vagueTime) + ' ago';
             }
