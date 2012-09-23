@@ -30,8 +30,7 @@
      *
      * Returns a vague time, such as 'just now' or '3 weeks ago',
      * based on a precise timestamp and an optional reference
-     * timestamp. If the reference timestamp is not provided,
-     * a default value of `Date.now()` is used instead.
+     * timestamp.
      *
      * @param from {number}    The timestamp to convert, in seconds.
      * @param [until] {number} The optional reference timestamp from
