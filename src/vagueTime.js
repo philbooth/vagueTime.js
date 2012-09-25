@@ -63,11 +63,11 @@
             return 's';
         }
 
-        if (units !== 's' && units !== 'ms') {
-            throw new Error('Invalid units');
+        if (units === 's' || units === 'ms') {
+            return units;
         }
 
-        return units;
+        throw new Error('Invalid units');
     }
 
     function normaliseTimestamp (time, units, defaultTime) {
