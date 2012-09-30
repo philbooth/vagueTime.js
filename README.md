@@ -32,7 +32,7 @@ var vagueTime = require('vague-time');
 #### Browser
 
 ```
-<script type="text/javascript" src=".../vagueTime/src/vagueTime.min.js"></script>
+<script type="text/javascript" src=".../vagueTime.js/src/vagueTime.min.js"></script>
 ```
 
 ### Calling the library
@@ -84,9 +84,6 @@ command `npm test` or `jake test`.
 
 [ci-image]: https://secure.travis-ci.org/philbooth/vagueTime.js.png?branch=master
 [ci-status]: http://travis-ci.org/#!/philbooth/vagueTime.js
-[onejs]: https://github.com/azer/onejs
-[browserify]: https://github.com/substack/node-browserify
-[ender]: http://ender.no.de/
 [node]: http://nodejs.org/
 [npm]: https://npmjs.org/
 [jake]: https://github.com/mde/jake
