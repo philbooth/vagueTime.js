@@ -55,13 +55,20 @@ defaulting to `'s'` if undefined.
 
 ```
 vagueTime.get({
-    from: 1171452690,
-    until: 1234567890
-}); // returns '2 years ago'
+    from: 0,
+    until: 60
+}); // returns '1 minute ago'
+
 vagueTime.get({
-    from: 1231938091,
-    until: 1234567890
-}); // returns '4 weeks ago'
+    from: 0,
+    until: 7200
+}); // returns '2 hours ago'
+
+vagueTime.get({
+    from: 0,
+    until: 345600
+}); // returns '4 days ago'
+
 vagueTime.get({
     from: Date.now(),
     units: 'ms'
