@@ -3,24 +3,26 @@
 (function () {
     'use strict';
 
-    var assert = require('chai').assert;
+    var assert = require('chai').assert,
+
+    modulePath = '../src/vagueTime';
 
     suite('vagueTime', function () {
         test('require does not throw', function () {
             assert.doesNotThrow(function () {
-                require('../src/vagueTime');
+                require(modulePath);
             });
         });
 
         test('require returns object', function () {
-            assert.isObject(require('../src/vagueTime'));
+            assert.isObject(require(modulePath));
         });
 
         suite('require', function () {
             var vagueTime;
 
             setup(function () {
-                vagueTime = require('../src/vagueTime');
+                vagueTime = require(modulePath);
             });
 
             teardown(function () {
