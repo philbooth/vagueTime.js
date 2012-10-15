@@ -32,7 +32,7 @@
      * based on a precise timestamp and an optional reference
      * timestamp.
      *
-     * @param from {number}    The timestamp to convert, in seconds.
+     * @param from {number}    The timestamp to convert to vague time.
      * @param [until] {number} The optional reference timestamp from
      *                         which to calculate the vague time,
      *                         defaults to `Date.now()`.
