@@ -2,8 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    
     <title>vagueTime.js browser test page</title>
+    
     <script type="text/javascript" src="../src/vagueTime.min.js"></script>
+    
     <script type="text/javascript">
       onload = initialise;
 
@@ -15,7 +18,7 @@
           var output = document.getElementById('vaguetime-output');
           
           try {
-              output.innerHTML = vagueTime.get({
+              output.innerHTML = 'Vague time: ' + vagueTime.get({
                   from: document.getElementById('from-input').value,
                   until: document.getElementById('until-input').value 
               });
@@ -27,19 +30,26 @@
       }
     </script>
   </head>
+  
   <body>
     <h1>vagueTime.js browser test page</h1>
+    
     <p>
-      Enter a <code>from</code> timestamp and an <code>until</code>
-      timestamp, then click the submit button.
+      Enter a <code>from</code> timestamp
+      and an <code>until</code> timestamp,
+      then click the submit button.
     </p>
+    
     <form>
       <label for="from-input">From:</label>
       <input id="from-input" type="text" />
+      
       <label for="until-input">Until:</label>
       <input id="until-input" type="text" />
+      
       <input id="submit-button" type="submit" value="Submit" />
     </form>
+    
     <p id="vaguetime-output"></p>
   </body>
 </html>
