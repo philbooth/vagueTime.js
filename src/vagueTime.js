@@ -17,12 +17,12 @@
         minute: 60000 // 1000 ms * 60 s
     };
 
-    if (typeof exports === 'undefined') {
+    if (exports) {
+        exports.get = getVagueTime;
+    } else {
         window.vagueTime = {
             get: getVagueTime
         };
-    } else {
-        exports.get = getVagueTime;
     }
 
     /**
