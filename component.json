@@ -8,6 +8,9 @@
         "email": "pmbooth@gmail.com"
     },
     "main": "src/vagueTime.min.js",
+    "scripts": [
+        "src/vagueTime.min.js"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/philbooth/vagueTime.js"
