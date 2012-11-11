@@ -32,13 +32,13 @@
      * based on a precise timestamp and an optional reference
      * timestamp.
      *
-     * @param from {number}    The timestamp to convert to vague time.
-     * @param [until] {number} The optional reference timestamp from
-     *                         which to calculate the vague time,
-     *                         defaults to `Date.now()`.
-     * @param [units] {string} The units the timestamps are measured
-     *                         in, either 's' for seconds or 'ms' for
-     *                         milliseconds, defaults to 's'.
+     * @option from {number}    The timestamp to convert to vague time.
+     * @option [until] {number} The optional reference timestamp from
+     *                          which to calculate the vague time,
+     *                          defaults to `Date.now()`.
+     * @option [units] {string} The units the timestamps are measured
+     *                          in, either 's' for seconds or 'ms' for
+     *                          milliseconds, defaults to 's'.
      */
     function getVagueTime (options) {
         var units = normaliseUnits(options.units),
