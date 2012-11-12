@@ -17,7 +17,7 @@
         minute: 60000 // 1000 ms * 60 s
     };
 
-    if (exports) {
+    if (typeof(exports) !== "undefined") {
         exports.get = getVagueTime;
     } else {
         window.vagueTime = {
