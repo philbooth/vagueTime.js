@@ -63,9 +63,9 @@
                 });
             });
 
-            test('get returns just now when times are equal', function () {
+            test('get returns just now when time is 1 second ago', function () {
                 assert.strictEqual(vagueTime.get({
-                    from: 1234567890,
+                    from: 1234567889,
                     until: 1234567890,
                     units: 's'
                 }), 'just now');
@@ -307,6 +307,126 @@
                     from: 0,
                     until: 60,
                 }), '1 minute ago');
+            });
+
+            test('get returns right now when times are equal', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    until: 1234567890,
+                    units: 's'
+                }), 'right now');
+            });
+
+            test('get returns now when time is 1 second away', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    until: 1234567889,
+                    units: 's'
+                }), 'now');
+            });
+
+            test('get returns now when time is 59 seconds away', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    until: 1234567831,
+                    units: 's'
+                }), 'now');
+            });
+
+            test('get returns in 1 minute when time is 60 seconds away', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    until: 1234567830,
+                    units: 's'
+                }), 'in 1 minute');
+            });
+
+            test('get returns in 59 minutes when time is 3,599 seconds away', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    until: 1234564291,
+                    units: 's'
+                }), 'in 59 minutes');
+            });
+
+            test('get returns in 1 hour when time is 3,600 seconds away', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    until: 1234564290,
+                    units: 's'
+                }), 'in 1 hour');
+            });
+
+            test('get returns in 23 hours when time is 86,399 seconds away', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    until: 1234481491,
+                    units: 's'
+                }), 'in 23 hours');
+            });
+
+            test('get returns in 1 day when time is 86,400 seconds away', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    until: 1234481490,
+                    units: 's'
+                }), 'in 1 day');
+            });
+
+            test('get returns in 6 days when time is 604,799 seconds away', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    until: 1233963091,
+                    units: 's'
+                }), 'in 6 days');
+            });
+
+            test('get returns in 1 week when time is 604,800 seconds away', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    until: 1233963090,
+                    units: 's'
+                }), 'in 1 week');
+            });
+
+            test('get returns in 4 weeks when time is 2,629,799 seconds away', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    until: 1231938091,
+                    units: 's'
+                }), 'in 4 weeks');
+            });
+
+            test('get returns in 1 month when time is 2,629,800 seconds away', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    until: 1231938090,
+                    units: 's'
+                }), 'in 1 month');
+            });
+
+            test('get returns in 11 months when time is 31,557,599 seconds away', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    until: 1203010291,
+                    units: 's'
+                }), 'in 11 months');
+            });
+
+            test('get returns in 1 year when time is 31,557,600 seconds away', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    until: 1203010290,
+                    units: 's'
+                }), 'in 1 year');
+            });
+
+            test('get returns in 2 years when time is 63,115,200 seconds away', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    until: 1171452690,
+                    units: 's'
+                }), 'in 2 years');
             });
         });
     });
