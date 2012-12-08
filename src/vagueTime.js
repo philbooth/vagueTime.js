@@ -16,6 +16,16 @@
         day: 86400000, // 1000 ms * 60 s * 60 m * 24 h
         hour: 3600000, // 1000 ms * 60 s * 60 m
         minute: 60000 // 1000 ms * 60 s
+    },
+
+    defaults = {
+        past: 'just now',
+        future: 'now'
+    },
+
+    formats = {
+        past: formatPast,
+        future: formatFuture
     };
 
     if (exports) {
@@ -30,8 +40,8 @@
      * Public function `get`.
      *
      * Returns a vague time, such as '3 weeks ago', 'just now' or
-     * 'in 2 hours', based on a precise timestamp and an optional
-     * reference timestamp.
+     * 'in 2 hours', based on a 'from' timestamp and an optional
+     * 'until' timestamp.
      *
      * @option from {number}    The timestamp to convert to vague time.
      * @option [until] {number} The optional reference timestamp from
@@ -45,27 +55,18 @@
         var units = normaliseUnits(options.units),
             from = normaliseTimestamp(options.from, units),
             until = normaliseTimestamp(options.until, units, Date.now()),
-            difference, format, fallback, time, vagueTime;
+            difference, type;
 
         difference = until - from;
 
         if (difference > 0) {
-            format = formatPast;
-            fallback = 'just now';
+            type = 'past';
         } else {
+            type = 'future';
             difference = -difference;
-            format = formatFuture;
-            fallback = 'now';
         }
 
-        for (time in times) {
-            if (times.hasOwnProperty(time) && difference >= times[time]) {
-                vagueTime = Math.floor(difference / times[time]);
-                return format(vagueTime, pluraliseNoun(time, vagueTime));
-            }
-        }
-
-        return fallback;
+        return estimate(difference, type);
     }
 
     function normaliseUnits (units) {
@@ -98,6 +99,19 @@
         }
 
         return time;
+    }
+
+    function estimate (difference, type) {
+        var time, vagueTime;
+
+        for (time in times) {
+            if (times.hasOwnProperty(time) && difference >= times[time]) {
+                vagueTime = Math.floor(difference / times[time]);
+                return formats[type](vagueTime, pluraliseNoun(time, vagueTime));
+            }
+        }
+
+        return defaults[type];
     }
 
     function pluraliseNoun (noun, amount) {
