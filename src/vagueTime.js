@@ -1,7 +1,6 @@
 /**
- * This module contains functionality that allows a precise timestamp
- * to be converted to a vague time, e.g. '3 weeks ago', 'just now' or
- * 'in 2 hours'.
+ * This module formats precise time differences as a vague/estimated
+ * time, e.g. '3 weeks ago', 'just now' or 'in 2 hours'.
  */
 
  /*globals exports, window */
@@ -39,26 +38,22 @@
     /**
      * Public function `get`.
      *
-     * Returns a vague time, such as '3 weeks ago', 'just now' or
-     * 'in 2 hours', based on a 'from' timestamp and an optional
-     * 'until' timestamp.
+     * Returns a vague time, such as '3 weeks ago', 'just now' or 'in 2 hours'.
      *
-     * @option from {number}    The timestamp to convert to vague time.
-     * @option [until] {number} The optional reference timestamp from
-     *                          which to calculate the vague time,
-     *                          defaults to `Date.now()`.
-     * @option [units] {string} The units the timestamps are measured
-     *                          in, either 's' for seconds or 'ms' for
-     *                          milliseconds, defaults to 's'.
+     * @option [from] {number}  The origin timestamp. Defaults to `Date.now()`.
+     * @option [to] {number}    The target timestamp. Defaults to `Date.now()`.
+     * @option [units] {string} The units the timestamps are measured in, can be
+     *                          either 's' for seconds or 'ms' for milliseconds.
+     *                          Defaults to 's'.
      */
     function getVagueTime (options) {
         var units = normaliseUnits(options.units),
             now = Date.now(),
             from = normaliseTimestamp(options.from, units, now),
-            until = normaliseTimestamp(options.until, units, now),
+            to = normaliseTimestamp(options.to, units, now),
             difference, type;
 
-        difference = until - from;
+        difference = from - to;
 
         if (difference > 0) {
             type = 'past';
@@ -83,7 +78,7 @@
     }
 
     function normaliseTimestamp (time, units, defaultTime) {
-        if (typeof time === 'undefined' && typeof defaultTime === 'number') {
+        if (typeof time === 'undefined') {
             return defaultTime;
         }
 
