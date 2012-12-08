@@ -25,10 +25,10 @@ git clone git@github.com:philbooth/vagueTime.js.git
 ```
 
 Or use one of the growing number of package managers, such as
-[Jam][jam] (`vague-time`),
-[Component][component] (`philbooth/vagueTime.js`),
-[Ender][ender] (`vague-time`)
-or [Bower][bower] (`vagueTime.js`).
+[Jam][jam],
+[Ender][ender] (package name for both is 'vague-time'),
+[Component][component] ('philbooth/vagueTime.js'),
+or [Bower][bower] ('vagueTime.js').
 
 ## Usage
 
