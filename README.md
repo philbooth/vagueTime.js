@@ -49,8 +49,7 @@ var vagueTime = require('vague-time');
 ### Calling the library
 
 vagueTime.js exports a single public function, `get`,
-which returns a vague time string,
-such as '3 months ago', 'just now' or 'in 2 hours',
+which returns a vague time string
 based on the argument(s) that you pass it.
 
 The arguments are passed as properties on a single options object.
@@ -65,18 +64,13 @@ denoting the units that the `from` and `to` timestamps are specified in,
 either `'s'` for seconds or `'ms'` for milliseconds,
 defaulting to `'s'` if undefined.
 
-Essentially, if `from` is greater than `to` the returned vague time will
-indicate some point in the past. If `from` is less than `to` it will
+Essentially, if `to` is less than `from` the returned vague time will
+indicate some point in the past. If `to` is greater than `from` it will
 indicate some point in the future.
 
 ### Examples
 
 ```
-vagueTime.get({
-    from: 0,
-    to: 60
-}); // returns 'in 1 minute'
-
 vagueTime.get({
     from: 60,
     to: 0
@@ -84,8 +78,8 @@ vagueTime.get({
 
 vagueTime.get({
     from: 0,
-    to: 7200
-}); // returns 'in 2 hours'
+    to: 60
+}); // returns 'in 1 minute'
 
 vagueTime.get({
     from: 7200,
@@ -94,13 +88,18 @@ vagueTime.get({
 
 vagueTime.get({
     from: 0,
-    to: 345600
-}); // returns 'in 4 days'
+    to: 7200
+}); // returns 'in 2 hours'
 
 vagueTime.get({
     from: 345600,
     to: 0
 }); // returns '4 days ago'
+
+vagueTime.get({
+    from: 0,
+    to: 345600
+}); // returns 'in 4 days'
 
 vagueTime.get({
     from: Date.now(),
