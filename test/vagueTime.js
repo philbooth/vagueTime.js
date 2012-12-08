@@ -7,7 +7,7 @@
 
     modulePath = '../src/vagueTime';
 
-    suite('vagueTime', function () {
+    suite('vagueTime:', function () {
         test('require does not throw', function () {
             assert.doesNotThrow(function () {
                 require(modulePath);
@@ -18,7 +18,7 @@
             assert.isObject(require(modulePath));
         });
 
-        suite('require', function () {
+        suite('require:', function () {
             var vagueTime;
 
             setup(function () {
@@ -61,6 +61,14 @@
                         units: 'foo'
                     });
                 });
+            });
+
+            test('get returns now when times are equal', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    until: 1234567890,
+                    units: 's'
+                }), 'now');
             });
 
             test('get returns just now when time is 1 second ago', function () {
@@ -284,22 +292,14 @@
                     from: '1234567890',
                     until: '1234567890',
                     units: 's'
-                }), 'just now');
-            });
-
-            test('get returns just now when time difference is negative', function () {
-                assert.strictEqual(vagueTime.get({
-                    from: 1234567890,
-                    until: 1234567830,
-                    units: 's'
-                }), 'just now');
+                }), 'now');
             });
 
             test('until defaults to now', function () {
-                assert.strictEqual(vagueTime.get({
+                assert.include(vagueTime.get({
                     from: Date.now(),
                     units: 'ms'
-                }), 'just now');
+                }), 'now');
             });
 
             test('units defaults to seconds', function () {
@@ -307,14 +307,6 @@
                     from: 0,
                     until: 60,
                 }), '1 minute ago');
-            });
-
-            test('get returns right now when times are equal', function () {
-                assert.strictEqual(vagueTime.get({
-                    from: 1234567890,
-                    until: 1234567890,
-                    units: 's'
-                }), 'right now');
             });
 
             test('get returns now when time is 1 second away', function () {

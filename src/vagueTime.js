@@ -1,6 +1,7 @@
 /**
  * This module contains functionality that allows a precise timestamp
- * to be converted to a vague time, e.g. 'just now' or '3 weeks ago'.
+ * to be converted to a vague time, e.g. '3 weeks ago', 'just now' or
+ * 'in 2 hours'.
  */
 
  /*globals exports, window */
@@ -28,9 +29,9 @@
     /**
      * Public function `get`.
      *
-     * Returns a vague time, such as 'just now' or '3 weeks ago',
-     * based on a precise timestamp and an optional reference
-     * timestamp.
+     * Returns a vague time, such as '3 weeks ago', 'just now' or
+     * 'in 2 hours', based on a precise timestamp and an optional
+     * reference timestamp.
      *
      * @option from {number}    The timestamp to convert to vague time.
      * @option [until] {number} The optional reference timestamp from
@@ -44,18 +45,27 @@
         var units = normaliseUnits(options.units),
             from = normaliseTimestamp(options.from, units),
             until = normaliseTimestamp(options.until, units, Date.now()),
-            difference, time, vagueTime;
+            difference, format, fallback, time, vagueTime;
 
         difference = until - from;
+
+        if (difference > 0) {
+            format = formatPast;
+            fallback = 'just now';
+        } else {
+            difference = -difference;
+            format = formatFuture;
+            fallback = 'now';
+        }
 
         for (time in times) {
             if (times.hasOwnProperty(time) && difference >= times[time]) {
                 vagueTime = Math.floor(difference / times[time]);
-                return vagueTime + ' ' + pluraliseNoun(time, vagueTime) + ' ago';
+                return format(vagueTime, pluraliseNoun(time, vagueTime));
             }
         }
 
-        return 'just now';
+        return fallback;
     }
 
     function normaliseUnits (units) {
@@ -92,6 +102,14 @@
 
     function pluraliseNoun (noun, amount) {
         return noun + (amount > 1 ? 's' : '');
+    }
+
+    function formatPast (vagueTime, unit) {
+        return vagueTime + ' ' + unit + ' ago';
+    }
+
+    function formatFuture (vagueTime, unit) {
+        return 'in ' + vagueTime + ' ' + unit;
     }
 }());
 
