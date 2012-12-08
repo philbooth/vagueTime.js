@@ -25,10 +25,10 @@ git clone git@github.com:philbooth/vagueTime.js.git
 ```
 
 Or use one of the growing number of package managers, such as
-[Jam] (`vague-time`),
-[Component] (`philbooth/vagueTime.js`),
-[Ender] (`vague-time`)
-or [Bower] (`vagueTime.js`).
+[Jam][jam] (`vague-time`),
+[Component][component] (`philbooth/vagueTime.js`),
+[Ender][ender] (`vague-time`)
+or [Bower][bower] (`vagueTime.js`).
 
 ## Usage
 
@@ -130,8 +130,8 @@ You can run them with the command `npm test` or `jake test`.
 
 [ci-image]: https://secure.travis-ci.org/philbooth/vagueTime.js.png?branch=master
 [ci-status]: http://travis-ci.org/#!/philbooth/vagueTime.js
-[component]: https://github.com/component/component
 [jam]: http://jamjs.org/
+[component]: https://github.com/component/component
 [ender]: https://github.com/ender-js/Ender
 [bower]: https://github.com/twitter/bower
 [node]: http://nodejs.org/
