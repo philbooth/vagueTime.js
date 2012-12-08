@@ -53,8 +53,9 @@
      */
     function getVagueTime (options) {
         var units = normaliseUnits(options.units),
-            from = normaliseTimestamp(options.from, units),
-            until = normaliseTimestamp(options.until, units, Date.now()),
+            now = Date.now(),
+            from = normaliseTimestamp(options.from, units, now),
+            until = normaliseTimestamp(options.until, units, now),
             difference, type;
 
         difference = until - from;
