@@ -23,6 +23,9 @@
         "ender"
     ],
     "ender": "noop",
+    "jam": {
+        "main": "src/vagueTime.js"
+    },
     "devDependencies": {
         "jake": "0.5.x",
         "jshint": "0.9.x",
