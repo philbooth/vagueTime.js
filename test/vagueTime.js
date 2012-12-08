@@ -279,18 +279,19 @@
                 }), '2 years ago');
             });
 
+            test('get returns now when times are equal', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    until: 1234567890,
+                    units: 's'
+                }), 'now');
+            });
+
             test('get accepts string arguments', function () {
                 assert.strictEqual(vagueTime.get({
                     from: '1234567890',
                     until: '1234567890',
                     units: 's'
-                }), 'now');
-            });
-
-            test('until defaults to now', function () {
-                assert.include(vagueTime.get({
-                    from: Date.now(),
-                    units: 'ms'
                 }), 'now');
             });
 
@@ -301,11 +302,10 @@
                 }), '1 minute ago');
             });
 
-            test('get returns now when times are equal', function () {
-                assert.strictEqual(vagueTime.get({
-                    from: 1234567890,
-                    until: 1234567890,
-                    units: 's'
+            test('until defaults to now', function () {
+                assert.include(vagueTime.get({
+                    from: Date.now(),
+                    units: 'ms'
                 }), 'now');
             });
 
