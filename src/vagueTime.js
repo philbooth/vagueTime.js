@@ -27,7 +27,7 @@
         future: formatFuture
     };
 
-    if (exports) {
+    if (typeof(exports) !== "undefined") {
         exports.get = getVagueTime;
     } else {
         window.vagueTime = {
