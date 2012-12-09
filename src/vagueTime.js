@@ -27,12 +27,12 @@
         future: formatFuture
     };
 
-    if (typeof(exports) !== "undefined") {
-        exports.get = getVagueTime;
-    } else {
+    if (typeof exports === 'undefined' || exports === null) {
         window.vagueTime = {
             get: getVagueTime
         };
+    } else {
+        exports.get = getVagueTime;
     }
 
     /**
