@@ -44,9 +44,8 @@
         var units = normaliseUnits(options.units),
             from = normaliseTimestamp(options.from, units),
             until = normaliseTimestamp(options.until, units, Date.now()),
-            difference, time, vagueTime;
-
-        difference = until - from;
+            difference = until - from,
+            time, vagueTime;
 
         for (time in times) {
             if (times.hasOwnProperty(time) && difference >= times[time]) {
