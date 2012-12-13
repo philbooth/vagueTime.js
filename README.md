@@ -73,27 +73,30 @@ indicate some point in the future.
 ```
 vagueTime.get({
     from: 60,
-    to: 0
+    to: 0,
+	units: 's'
 }); // returns '1 minute ago'
 
 vagueTime.get({
     from: 0,
-    to: 60
+    to: 60,
+	units: 's'
 }); // returns 'in 1 minute'
 
 vagueTime.get({
     from: 7200,
-    to: 0
+    to: 0,
+	units: 's'
 }); // returns '2 hours ago'
 
 vagueTime.get({
     from: 0,
-    to: 7200
+    to: 7200,
+	units: 's'
 }); // returns 'in 2 hours'
 
 vagueTime.get({
-    from: Date.now(),
-    units: 'ms'
+    to: Date.now()
 }); // returns 'now'
 ```
 
