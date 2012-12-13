@@ -96,7 +96,7 @@ vagueTime.get({
 }); // returns 'in 2 hours'
 
 vagueTime.get({
-    to: Date.now()
+    from: Date.now()
 }); // returns 'now'
 ```
 
