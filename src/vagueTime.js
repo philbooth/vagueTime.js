@@ -1,6 +1,6 @@
 /**
- * This module contains functionality that allows a precise timestamp
- * to be converted to a vague time, e.g. 'just now' or '3 weeks ago'.
+ * This module formats precise time differences as a vague/estimated
+ * time, e.g. '3 weeks ago', 'just now' or 'in 2 hours'.
  */
 
  /*globals exports, window */
@@ -15,46 +15,53 @@
         day: 86400000, // 1000 ms * 60 s * 60 m * 24 h
         hour: 3600000, // 1000 ms * 60 s * 60 m
         minute: 60000 // 1000 ms * 60 s
+    },
+
+    defaults = {
+        past: 'just now',
+        future: 'now'
+    },
+
+    formats = {
+        past: formatPast,
+        future: formatFuture
     };
 
-    if (exports) {
-        exports.get = getVagueTime;
-    } else {
+    if (typeof exports === 'undefined' || exports === null) {
         window.vagueTime = {
             get: getVagueTime
         };
+    } else {
+        exports.get = getVagueTime;
     }
 
     /**
      * Public function `get`.
      *
-     * Returns a vague time, such as 'just now' or '3 weeks ago',
-     * based on a precise timestamp and an optional reference
-     * timestamp.
+     * Returns a vague time, such as '3 weeks ago', 'just now' or 'in 2 hours'.
      *
-     * @option from {number}    The timestamp to convert to vague time.
-     * @option [until] {number} The optional reference timestamp from
-     *                          which to calculate the vague time,
-     *                          defaults to `Date.now()`.
-     * @option [units] {string} The units the timestamps are measured
-     *                          in, either 's' for seconds or 'ms' for
-     *                          milliseconds, defaults to 's'.
+     * @option [from] {number}  The origin timestamp. Defaults to `Date.now()`.
+     * @option [to] {number}    The target timestamp. Defaults to `Date.now()`.
+     * @option [units] {string} The units the timestamps are measured in, can be
+     *                          either 's' for seconds or 'ms' for milliseconds.
+     *                          Defaults to 's'.
      */
     function getVagueTime (options) {
         var units = normaliseUnits(options.units),
-            from = normaliseTimestamp(options.from, units),
-            until = normaliseTimestamp(options.until, units, Date.now()),
-            difference = until - from,
-            time, vagueTime;
+            now = Date.now(),
+            from = normaliseTimestamp(options.from, units, now),
+            to = normaliseTimestamp(options.to, units, now),
+            difference = from - to,
+            type;
 
-        for (time in times) {
-            if (times.hasOwnProperty(time) && difference >= times[time]) {
-                vagueTime = Math.floor(difference / times[time]);
-                return vagueTime + ' ' + pluraliseNoun(time, vagueTime) + ' ago';
-            }
+        if (difference > 0) {
+            type = 'past';
+        } else {
+            type = 'future';
+            difference = -difference;
         }
 
-        return 'just now';
+        return estimate(difference, type);
     }
 
     function normaliseUnits (units) {
@@ -70,7 +77,7 @@
     }
 
     function normaliseTimestamp (time, units, defaultTime) {
-        if (typeof time === 'undefined' && typeof defaultTime === 'number') {
+        if (typeof time === 'undefined') {
             return defaultTime;
         }
 
@@ -89,8 +96,29 @@
         return time;
     }
 
+    function estimate (difference, type) {
+        var time, vagueTime;
+
+        for (time in times) {
+            if (times.hasOwnProperty(time) && difference >= times[time]) {
+                vagueTime = Math.floor(difference / times[time]);
+                return formats[type](vagueTime, pluraliseNoun(time, vagueTime));
+            }
+        }
+
+        return defaults[type];
+    }
+
     function pluraliseNoun (noun, amount) {
         return noun + (amount > 1 ? 's' : '');
+    }
+
+    function formatPast (vagueTime, unit) {
+        return vagueTime + ' ' + unit + ' ago';
+    }
+
+    function formatFuture (vagueTime, unit) {
+        return 'in ' + vagueTime + ' ' + unit;
     }
 }());
 
