@@ -62,7 +62,7 @@ defaulting to `Date.now()` if undefined.
 The optional property `units` is a string,
 denoting the units that the `from` and `to` timestamps are specified in,
 either `'s'` for seconds or `'ms'` for milliseconds,
-defaulting to `'s'` if undefined.
+defaulting to `'ms'` if undefined.
 
 Essentially, if `to` is less than `from` the returned vague time will
 indicate some point in the past. If `to` is greater than `from` it will

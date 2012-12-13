@@ -44,7 +44,7 @@
      * @option [to] {number}    The target timestamp. Defaults to `Date.now()`.
      * @option [units] {string} The units the timestamps are measured in, can be
      *                          either 's' for seconds or 'ms' for milliseconds.
-     *                          Defaults to 's'.
+     *                          Defaults to 'ms'.
      */
     function getVagueTime (options) {
         var units = normaliseUnits(options.units),
