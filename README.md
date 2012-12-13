@@ -2,7 +2,7 @@
 
 A tiny JavaScript library
 that formats precise time differences
-as a vague/estimated time,
+as a vague/fuzzy time,
 e.g. '3 months ago', 'just now' or 'in 2 hours'.
 
 [![Build status][ci-image]][ci-status]

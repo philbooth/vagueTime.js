@@ -1,5 +1,5 @@
 /**
- * This module formats precise time differences as a vague/estimated
+ * This module formats precise time differences as a vague/fuzzy
  * time, e.g. '3 weeks ago', 'just now' or 'in 2 hours'.
  */
 
