@@ -92,16 +92,6 @@ vagueTime.get({
 }); // returns 'in 2 hours'
 
 vagueTime.get({
-    from: 345600,
-    to: 0
-}); // returns '4 days ago'
-
-vagueTime.get({
-    from: 0,
-    to: 345600
-}); // returns 'in 4 days'
-
-vagueTime.get({
     from: Date.now(),
     units: 'ms'
 }); // returns 'now'
