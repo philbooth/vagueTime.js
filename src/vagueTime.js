@@ -66,7 +66,7 @@
 
     function normaliseUnits (units) {
         if (typeof units === 'undefined') {
-            return 's';
+            return 'ms';
         }
 
         if (units === 's' || units === 'ms') {

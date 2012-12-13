@@ -295,9 +295,9 @@
                 }), 'now');
             });
 
-            test('units defaults to seconds', function () {
+            test('units defaults to milliseconds', function () {
                 assert.strictEqual(vagueTime.get({
-                    from: 60,
+                    from: 60000,
                     to: 0,
                 }), '1 minute ago');
             });
