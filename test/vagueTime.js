@@ -295,6 +295,13 @@
                 }), 'now');
             });
 
+            test('get accepts date arguments', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: new Date(2013, 0, 1),
+                    to: new Date(2012, 11, 31)
+                }), '1 day ago');
+            });
+
             test('units defaults to milliseconds', function () {
                 assert.strictEqual(vagueTime.get({
                     from: 60000,
