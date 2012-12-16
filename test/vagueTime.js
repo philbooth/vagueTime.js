@@ -302,6 +302,14 @@
                 }), '1 day ago');
             });
 
+            test('get ignores units when arguments are dates', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: new Date(2012, 11, 16, 23, 59, 59),
+                    to: new Date(2012, 11, 15),
+                    units: 's'
+                }), '1 day ago');
+            });
+
             test('units defaults to milliseconds', function () {
                 assert.strictEqual(vagueTime.get({
                     from: 60000,

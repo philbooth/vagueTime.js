@@ -90,7 +90,7 @@
             throw new Error('Invalid time');
         }
 
-        if (units === 's') {
+        if (typeof time === 'number' && units === 's') {
             time *= 1000;
         }
 
