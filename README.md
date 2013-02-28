@@ -35,7 +35,7 @@ git clone git@github.com:philbooth/vagueTime.js.git
 
 ### Loading the library
 
-#### Node.js
+#### Via CommonJS
 
 ```
 var vagueTime = require('vague-time');
