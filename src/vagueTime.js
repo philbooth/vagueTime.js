@@ -25,14 +25,18 @@
     formats = {
         past: formatPast,
         future: formatFuture
+    },
+
+    functions = {
+        get: getVagueTime
     };
 
-    if (typeof exports === 'undefined' || exports === null) {
-        window.vagueTime = {
-            get: getVagueTime
-        };
+    if (typeof define === 'function' && define.amd) {
+        define([ 'vague-time' ], functions);
+    } else if (typeof module === 'object' && module !== null) {
+        module.exports = functions;
     } else {
-        exports.get = getVagueTime;
+        window.vagueTime = functions;
     }
 
     /**
