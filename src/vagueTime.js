@@ -3,7 +3,7 @@
  * time, e.g. '3 weeks ago', 'just now' or 'in 2 hours'.
  */
 
- /*globals exports, window */
+ /*globals define, module, window */
 
 (function () {
     'use strict';
