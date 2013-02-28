@@ -317,11 +317,11 @@
                 }), '1 minute ago');
             });
 
-            test('until defaults to now', function () {
+            test('until defaults to soon', function () {
                 assert.include(vagueTime.get({
                     to: Date.now(),
                     units: 'ms'
-                }), 'now');
+                }), 'soon');
             });
 
             test('get returns soon when time is 59 seconds ahead', function () {
@@ -340,11 +340,11 @@
                 }), 'in 1 minute');
             });
 
-            test('from defaults to now', function () {
+            test('from defaults to soon', function () {
                 assert.include(vagueTime.get({
                     to: Date.now(),
                     units: 'ms'
-                }), 'now');
+                }), 'soon');
             });
         });
     });
