@@ -19,7 +19,7 @@
 
     defaults = {
         past: 'just now',
-        future: 'now'
+        future: 'soon'
     },
 
     formats = {

@@ -279,12 +279,12 @@
                 }), '2 years ago');
             });
 
-            test('get returns now when times are equal', function () {
+            test('get returns soon when times are equal', function () {
                 assert.strictEqual(vagueTime.get({
                     from: 1234567890,
                     to: 1234567890,
                     units: 's'
-                }), 'now');
+                }), 'soon');
             });
 
             test('get accepts string arguments', function () {
@@ -292,7 +292,7 @@
                     from: '1234567890',
                     to: '1234567890',
                     units: 's'
-                }), 'now');
+                }), 'soon');
             });
 
             test('get accepts date arguments', function () {
@@ -324,12 +324,12 @@
                 }), 'now');
             });
 
-            test('get returns now when time is 59 seconds ahead', function () {
+            test('get returns soon when time is 59 seconds ahead', function () {
                 assert.strictEqual(vagueTime.get({
                     from: 1234567890,
                     to: 1234567949,
                     units: 's'
-                }), 'now');
+                }), 'soon');
             });
 
             test('get returns in 1 minute when time is 60 seconds ahead', function () {
