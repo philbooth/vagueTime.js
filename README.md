@@ -13,26 +13,23 @@ you may be interested in vagueTime's big sister,
 
 ## Installation
 
-### Node.js
+### Via NPM
 
 ```
 npm install vague-time
 ```
 
-### Browser
+### Via Jam
 
-To use vagueTime.js in a browser environment, you can
-either clone the git repository like so:
+```
+jam install vague-time
+```
+
+### Via Git
 
 ```
 git clone git@github.com:philbooth/vagueTime.js.git
 ```
-
-Or use one of the growing number of package managers, such as
-[Jam][jam],
-[Ender][ender] (the package name for both is 'vague-time'),
-[Bower][bower] ('vagueTime.js')
-or [Component][component] ('philbooth/vagueTime.js').
 
 ## Usage
 
@@ -44,10 +41,17 @@ or [Component][component] ('philbooth/vagueTime.js').
 var vagueTime = require('vague-time');
 ```
 
-#### Browser
+#### Via AMD
 
 ```
-<script type="text/javascript" src=".../vagueTime.js/src/vagueTime.min.js"></script>
+require('vague-time', function (vagueTime) {
+});
+```
+
+#### Globally
+
+```
+<script src="vagueTime.min.js"></script>
 ```
 
 ### Calling the library
