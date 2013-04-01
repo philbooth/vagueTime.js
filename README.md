@@ -35,24 +35,18 @@ git clone git@github.com:philbooth/vagueTime.js.git
 
 ### Loading the library
 
-#### Via CommonJS
-
-```
-var vagueTime = require('vague-time');
-```
-
-#### Via AMD
-
-```
-require('vague-time', function (vagueTime) {
-});
-```
-
-#### Globally
-
-```
-<script src="vagueTime.min.js"></script>
-```
+Both
+CommonJS
+(e.g.
+if you're running on [Node.js][node]
+or if you're in the browser with [Browserify])
+and AMD
+(e.g. if you're using [Require.js][require])
+loading styles are supported.
+If neither system is detected,
+the library defaults to
+exporting it's interface globally
+as `vagueTime`.
 
 ### Calling the library
 
@@ -117,7 +111,7 @@ vagueTime.get({
 ### Dependencies
 
 The build environment relies on
-[Node.js][node],
+Node.js,
 [NPM],
 [Jake],
 [JSHint],
@@ -136,11 +130,9 @@ You can run them with the command `npm test` or `jake test`.
 [ci-image]: https://secure.travis-ci.org/philbooth/vagueTime.js.png?branch=master
 [ci-status]: http://travis-ci.org/#!/philbooth/vagueTime.js
 [vague-date]: https://github.com/philbooth/vagueDate.js
-[jam]: http://jamjs.org/
-[component]: https://github.com/component/component
-[ender]: https://github.com/ender-js/Ender
-[bower]: https://github.com/twitter/bower
 [node]: http://nodejs.org/
+[browserify]: http://browserify.org/
+[require]: http://requirejs.org/
 [npm]: https://npmjs.org/
 [jake]: https://github.com/mde/jake
 [jshint]: https://github.com/jshint/node-jshint
