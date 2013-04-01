@@ -3,9 +3,9 @@
  * time, e.g. '3 weeks ago', 'just now' or 'in 2 hours'.
  */
 
- /*globals exports, window */
+ /*globals define, module */
 
-(function () {
+(function (globals) {
     'use strict';
 
     var times = {
@@ -27,13 +27,7 @@
         future: formatFuture
     };
 
-    if (typeof exports === 'undefined' || exports === null) {
-        window.vagueTime = {
-            get: getVagueTime
-        };
-    } else {
-        exports.get = getVagueTime;
-    }
+    exportFunctions();
 
     /**
      * Public function `get`.
@@ -121,5 +115,8 @@
     function formatFuture (vagueTime, unit) {
         return 'in ' + vagueTime + ' ' + unit;
     }
-}());
+
+    function exportFunctions () {
+    }
+}(this));
 
