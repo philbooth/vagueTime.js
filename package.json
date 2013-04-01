@@ -28,7 +28,7 @@
     },
     "devDependencies": {
         "jake": "0.5.x",
-        "jshint": "0.9.x",
+        "jshint": "1.0.x",
         "mocha": "1.7.x",
         "chai": "1.4.x",
         "uglify-js": "2.2.x"
