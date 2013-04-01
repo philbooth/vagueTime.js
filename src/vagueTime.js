@@ -31,13 +31,7 @@
         get: getVagueTime
     };
 
-    if (typeof define === 'function' && define.amd) {
-        define([ 'vague-time' ], functions);
-    } else if (typeof module === 'object' && module !== null) {
-        module.exports = functions;
-    } else {
-        window.vagueTime = functions;
-    }
+    exportFunctions();
 
     /**
      * Public function `get`.
@@ -135,6 +129,15 @@
     }
 
     function exportFunctions () {
+        if (typeof define === 'function' && define.amd) {
+            define(function () {
+                return functions;
+            });
+        } else if (typeof module === 'object' && module !== null) {
+            module.exports = functions;
+        } else {
+            globals.vagueTime = functions;
+        }
     }
 }(this));
 
