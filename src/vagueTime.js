@@ -1,5 +1,5 @@
 /**
- * This module formats precise time differences as a vague/estimated
+ * This module formats precise time differences as a vague/fuzzy
  * time, e.g. '3 weeks ago', 'just now' or 'in 2 hours'.
  */
 
@@ -19,35 +19,45 @@
 
     defaults = {
         past: 'just now',
-        future: 'now'
+        future: 'soon'
     },
 
     formats = {
         past: formatPast,
         future: formatFuture
+    },
+
+    functions = {
+        get: getVagueTime
     };
 
-    exportFunctions();
+    if (typeof define === 'function' && define.amd) {
+        define([ 'vague-time' ], functions);
+    } else if (typeof module === 'object' && module !== null) {
+        module.exports = functions;
+    } else {
+        window.vagueTime = functions;
+    }
 
     /**
      * Public function `get`.
      *
      * Returns a vague time, such as '3 weeks ago', 'just now' or 'in 2 hours'.
      *
-     * @option [from] {number}  The origin timestamp. Defaults to `Date.now()`.
-     * @option [to] {number}    The target timestamp. Defaults to `Date.now()`.
-     * @option [units] {string} The units the timestamps are measured in, can be
-     *                          either 's' for seconds or 'ms' for milliseconds.
-     *                          Defaults to 's'.
+     * @option [from] {Date}    The origin time. Defaults to `Date.now()`.
+     * @option [to] {Date}      The target time. Defaults to `Date.now()`.
+     * @option [units] {string} If `from` or `to` are timestamps rather than date
+     *                          instances, this indicates the units that they are
+     *                          measured in. Can be either `ms` for milliseconds
+     *                          or `s` for seconds. Defaults to `ms`.
      */
     function getVagueTime (options) {
         var units = normaliseUnits(options.units),
             now = Date.now(),
-            from = normaliseTimestamp(options.from, units, now),
-            to = normaliseTimestamp(options.to, units, now),
-            difference, type;
-
-        difference = from - to;
+            from = normaliseTime(options.from, units, now),
+            to = normaliseTime(options.to, units, now),
+            difference = from - to,
+            type;
 
         if (difference > 0) {
             type = 'past';
@@ -61,7 +71,7 @@
 
     function normaliseUnits (units) {
         if (typeof units === 'undefined') {
-            return 's';
+            return 'ms';
         }
 
         if (units === 's' || units === 'ms') {
@@ -71,7 +81,7 @@
         throw new Error('Invalid units');
     }
 
-    function normaliseTimestamp (time, units, defaultTime) {
+    function normaliseTime(time, units, defaultTime) {
         if (typeof time === 'undefined') {
             return defaultTime;
         }
@@ -80,15 +90,23 @@
             time = parseInt(time, 10);
         }
 
-        if (typeof time !== 'number' || isNaN(time)) {
-            throw new Error('Invalid timestamp');
+        if (isNotDate(time) && isNotTimestamp(time)) {
+            throw new Error('Invalid time');
         }
 
-        if (units === 's') {
-            return time * 1000;
+        if (typeof time === 'number' && units === 's') {
+            time *= 1000;
         }
 
         return time;
+    }
+
+    function isNotDate (date) {
+        return Object.prototype.toString.call(date) !== "[object Date]" || isNaN(date.getTime());
+    }
+
+    function isNotTimestamp (timestamp) {
+        return typeof timestamp !== 'number' || isNaN(timestamp);
     }
 
     function estimate (difference, type) {

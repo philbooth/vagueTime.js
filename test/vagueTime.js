@@ -279,12 +279,12 @@
                 }), '2 years ago');
             });
 
-            test('get returns now when times are equal', function () {
+            test('get returns soon when times are equal', function () {
                 assert.strictEqual(vagueTime.get({
                     from: 1234567890,
                     to: 1234567890,
                     units: 's'
-                }), 'now');
+                }), 'soon');
             });
 
             test('get accepts string arguments', function () {
@@ -292,29 +292,44 @@
                     from: '1234567890',
                     to: '1234567890',
                     units: 's'
-                }), 'now');
+                }), 'soon');
             });
 
-            test('units defaults to seconds', function () {
+            test('get accepts date arguments', function () {
                 assert.strictEqual(vagueTime.get({
-                    from: 60,
+                    from: new Date(2013, 0, 1),
+                    to: new Date(2012, 11, 31)
+                }), '1 day ago');
+            });
+
+            test('get ignores units when arguments are dates', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: new Date(2012, 11, 16, 23, 59, 59),
+                    to: new Date(2012, 11, 15),
+                    units: 's'
+                }), '1 day ago');
+            });
+
+            test('units defaults to milliseconds', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 60000,
                     to: 0,
                 }), '1 minute ago');
             });
 
-            test('until defaults to now', function () {
+            test('until defaults to soon', function () {
                 assert.include(vagueTime.get({
                     to: Date.now(),
                     units: 'ms'
-                }), 'now');
+                }), 'soon');
             });
 
-            test('get returns now when time is 59 seconds ahead', function () {
+            test('get returns soon when time is 59 seconds ahead', function () {
                 assert.strictEqual(vagueTime.get({
                     from: 1234567890,
                     to: 1234567949,
                     units: 's'
-                }), 'now');
+                }), 'soon');
             });
 
             test('get returns in 1 minute when time is 60 seconds ahead', function () {
@@ -325,11 +340,11 @@
                 }), 'in 1 minute');
             });
 
-            test('from defaults to now', function () {
+            test('from defaults to soon', function () {
                 assert.include(vagueTime.get({
                     to: Date.now(),
                     units: 'ms'
-                }), 'now');
+                }), 'soon');
             });
         });
     });
