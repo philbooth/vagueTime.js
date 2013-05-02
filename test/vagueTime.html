@@ -2,55 +2,22 @@
 <html>
   <head>
     <meta charset="utf-8" />
-
-    <title>vagueTime.js browser test page</title>
-
-    <script type="text/javascript" src="../src/vagueTime.min.js"></script>
-
-    <script type="text/javascript">
-      onload = initialise;
-
-      function initialise () {
-          document.getElementById('submit-button').addEventListener('click', onClickSubmit, false);
-      }
-
-      function onClickSubmit (evt) {
-          var output = document.getElementById('vaguetime-output');
-
-          try {
-              output.innerHTML = 'Vague time: ' + vagueTime.get({
-                  from: document.getElementById('from-input').value,
-                  to: document.getElementById('to-input').value
-              });
-          } catch (error) {
-              output.innerHTML = 'Error: ' + error.message;
-          }
-
-          evt.preventDefault();
-      }
-    </script>
+    <title>vagueTime.js unit tests</title>
+    <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
   </head>
-
   <body>
-    <h1>vagueTime.js browser test page</h1>
-
-    <p>
-      Enter a <code>from</code> timestamp
-      and a <code>to</code> timestamp,
-      then click the submit button.
-    </p>
-
-    <form>
-      <label for="from-input">From:</label>
-      <input id="from-input" type="text" />
-
-      <label for="to-input">To:</label>
-      <input id="to-input" type="text" />
-
-      <input id="submit-button" type="submit" value="Submit" />
-    </form>
-
-    <p id="vaguetime-output"></p>
+    <div id="mocha"></div>
+    <script src="../node_modules/chai/chai.js"></script>
+    <script src="../node_modules/mocha/mocha.js"></script>
+    <script>
+      mocha.setup('tdd');
+    </script>
+    <script src="../src/vagueTime.min.js"></script>
+    <script src="vagueTime_browser.js"></script>
+    <script>
+      mocha.checkLeaks();
+      mocha.run();
+    </script>
   </body>
 </html>
 
