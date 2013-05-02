@@ -126,6 +126,8 @@ to install all of the dependencies as listed in `package.json`.
 
 The unit tests are in `test/vagueTime.js`.
 You can run them with the command `npm test` or `jake test`.
+To run the tests in a web browser,
+open `test/vagueTime.html`.
 
 [ci-image]: https://secure.travis-ci.org/philbooth/vagueTime.js.png?branch=master
 [ci-status]: http://travis-ci.org/#!/philbooth/vagueTime.js
