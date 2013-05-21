@@ -14,38 +14,34 @@ commands = {
 
 desc('Minify the source code for deployment.');
 task('minify', function () {
-    runTask('minify', 'Minifying...');
+    runCommand('minify', 'Minifying...');
 }, {
     async: true
 });
 
 desc('Run the unit tests.');
 task('test', function () {
-    runTask('test', 'Testing...');
+    runCommand('test', 'Testing...');
 }, {
     async: true
 });
 
 desc('Lint the source code.');
 task('lint', function () {
-    runTask('lint', 'Linting...');
+    runCommand('lint', 'Linting...');
 }, {
     async: true
 });
 
 desc('Install dependencies.');
 task('prepare', function () {
-    runTask('prepare', 'Preparing the build environment...');
+    runCommand('prepare', 'Preparing the build environment...');
 }, {
     async: true
 });
 
-function runTask (command, message) {
+function runCommand (command, message) {
     console.log(message);
-    runCommand(command);
-}
-
-function runCommand (command) {
     exec(commands[command], { cwd: __dirname }, function (error, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);
