@@ -10,9 +10,9 @@ e.g. '3 months ago', 'just now' or 'in 2 hours'.
 If this project isn't quite what your'e looking for,
 you may be interested in vagueTime's big sister,
 [vagueDate.js][vague-date].
-
-Or if you want
-to parse vague time strings,
+Or if you would like
+to parse vague time strings
+rather than generate them,
 you should try
 Matthew Mueller's [date]
 or Tim Wood's [moment].
