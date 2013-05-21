@@ -11,6 +11,16 @@ If this project isn't quite what your'e looking for,
 you may be interested in vagueTime's big sister,
 [vagueDate.js][vague-date].
 
+Or if you want
+to parse vague time strings,
+you should try
+Matthew Mueller's [date]
+or Tim Wood's [moment].
+
+## License
+
+[MIT][license]
+
 ## Installation
 
 ### Via NPM
@@ -132,6 +142,9 @@ open `test/vagueTime.html`.
 [ci-image]: https://secure.travis-ci.org/philbooth/vagueTime.js.png?branch=master
 [ci-status]: http://travis-ci.org/#!/philbooth/vagueTime.js
 [vague-date]: https://github.com/philbooth/vagueDate.js
+[date]: https://github.com/MatthewMueller/date
+[moment]: https://github.com/timrwood/moment
+[license]: https://github.com/philbooth/vagueTime.js/blob/master/COPYING
 [node]: http://nodejs.org/
 [browserify]: http://browserify.org/
 [require]: http://requirejs.org/
