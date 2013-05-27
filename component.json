@@ -9,9 +9,9 @@
         { "name": "seth-cameo" },
         { "name": "Pepijn de Vos" }
     ],
-    "main": "src/vagueTime.min.js",
+    "main": "src/vagueTime.js",
     "scripts": [
-        "src/vagueTime.min.js"
+        "src/vagueTime.js"
     ],
     "repository": {
         "type": "git",
