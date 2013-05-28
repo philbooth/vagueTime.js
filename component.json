@@ -1,13 +1,14 @@
 {
     "name": "vague-time",
     "repo": "philbooth/vagueTime.js",
-    "version": "0.5.3",
+    "version": "0.5.4",
     "author": "Phil Booth <pmbooth@gmail.com>",
     "description": "A tiny library that formats precise time differences as a vague/fuzzy time, e.g. '3 months ago', 'just now' or 'in 2 hours'.",
     "contributors": [
         { "name": "Phil Booth", "email": "pmbooth@gmail.com" },
         { "name": "seth-cameo" },
-        { "name": "Pepijn de Vos" }
+        { "name": "Pepijn de Vos" },
+        { "name": "JayceTDE" }
     ],
     "main": "src/vagueTime.js",
     "scripts": [
