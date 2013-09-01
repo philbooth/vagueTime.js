@@ -17,21 +17,56 @@
         minute: 60000 // 1000 ms * 60 s
     },
 
-    defaults = {
-        past: 'just now',
-        future: 'soon'
-    },
-
-    formats = {
-        past: formatPast,
-        future: formatFuture
-    },
-
     functions = {
         get: getVagueTime
     };
 
     exportFunctions();
+    
+    var languages = {
+        en: {
+            year:   ['year',   'years'],
+            month:  ['month',  'months'],
+            week:   ['week',   'weeks'],
+            day:    ['day',    'days'],
+            hour:   ['hour', 'hours'],
+            minute: ['minute', 'minutes'],
+            
+            past: function (vagueTime, unit) {
+                return vagueTime + ' ' + unit + ' ago';
+            },
+
+            future: function (vagueTime, unit) {
+                return 'in ' + vagueTime + ' ' + unit;
+            },
+                    
+            defaults: {
+                past: 'just now',
+                future: 'soon'
+            }
+        },
+        de: {
+            year:   ['Jahr',   'Jahren'],
+            month:  ['Monat',  'Monaten'],
+            week:   ['Woche',  'Wochen'],
+            day:    ['Tag',    'Tagen'],
+            hour:   ['Stunde', 'Stunden'],
+            minute: ['Minute', 'Minuten'],
+            
+            past: function (vagueTime, unit) {
+                return 'vor ' + vagueTime + ' ' + unit;
+            },
+
+            future: function (vagueTime, unit) {
+                return 'in ' + vagueTime + ' ' + unit;
+            },
+                    
+            defaults: {
+                past: 'jetzt gerade',
+                future: 'bald'
+            }
+        },
+    }
 
     /**
      * Public function `get`.
@@ -44,6 +79,7 @@
      *                          instances, this indicates the units that they are
      *                          measured in. Can be either `ms` for milliseconds
      *                          or `s` for seconds. Defaults to `ms`.
+     * @option [lang] {string}  The output language. Defaults to `en`.
      */
     function getVagueTime (options) {
         var units = normaliseUnits(options.units),
@@ -60,7 +96,7 @@
             difference = -difference;
         }
 
-        return estimate(difference, type);
+        return estimate(difference, type, options.lang);
     }
 
     function normaliseUnits (units) {
@@ -103,29 +139,18 @@
         return typeof timestamp !== 'number' || isNaN(timestamp);
     }
 
-    function estimate (difference, type) {
+    function estimate (difference, type, language) {
         var time, vagueTime;
+        var l = languages[language] || languages.en;
 
         for (time in times) {
             if (times.hasOwnProperty(time) && difference >= times[time]) {
                 vagueTime = Math.floor(difference / times[time]);
-                return formats[type](vagueTime, pluraliseNoun(time, vagueTime));
+                return l[type](vagueTime, l[time][(vagueTime > 1)+0]);
             }
         }
 
-        return defaults[type];
-    }
-
-    function pluraliseNoun (noun, amount) {
-        return noun + (amount > 1 ? 's' : '');
-    }
-
-    function formatPast (vagueTime, unit) {
-        return vagueTime + ' ' + unit + ' ago';
-    }
-
-    function formatFuture (vagueTime, unit) {
-        return 'in ' + vagueTime + ' ' + unit;
+        return l.defaults[type];
     }
 
     function exportFunctions () {
