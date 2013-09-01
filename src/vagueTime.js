@@ -29,7 +29,7 @@
             month:  ['month',  'months'],
             week:   ['week',   'weeks'],
             day:    ['day',    'days'],
-            hour: ['hour', 'hours'],
+            hour:   ['hour', 'hours'],
             minute: ['minute', 'minutes'],
             
             past: function (vagueTime, unit) {
@@ -50,7 +50,7 @@
             month:  ['Monat',  'Monaten'],
             week:   ['Woche',  'Wochen'],
             day:    ['Tag',    'Tagen'],
-            hour: ['Stunde', 'Stunden'],
+            hour:   ['Stunde', 'Stunden'],
             minute: ['Minute', 'Minuten'],
             
             past: function (vagueTime, unit) {
