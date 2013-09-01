@@ -369,7 +369,7 @@
                 }), 'vor 4 Wochen');
             });
 
-            test('get returns vor 1 Monat ago when time is 2,629,800 seconds ago (german)', function () {
+            test('get returns vor 1 Monat when time is 2,629,800 seconds ago (german)', function () {
                 assert.strictEqual(vagueTime.get({
                     from: 1234567890,
                     to: 1231938090,
@@ -378,7 +378,7 @@
                 }), 'vor 1 Monat');
             });
 
-            test('get returns vor 11 Monaten ago when time is 31,557,599 seconds ago (german)', function () {
+            test('get returns vor 11 Monaten when time is 31,557,599 seconds ago (german)', function () {
                 assert.strictEqual(vagueTime.get({
                     from: 1234567890,
                     to: 1203010291,
