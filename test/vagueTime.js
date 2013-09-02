@@ -278,6 +278,141 @@
                     units: 'ms'
                 }), '2 years ago');
             });
+            
+            test('get returns jetzt gerade when time is 1 second ago (german)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234567889,
+                    units: 's',
+                    lang: 'de'
+                }), 'jetzt gerade');
+            });
+
+            test('get returns jetzt gerade when time is 59 seconds ago (german)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234567831,
+                    units: 's',
+                    lang: 'de'
+                }), 'jetzt gerade');
+            });
+
+            test('get returns vor 1 Minute when time is 60 seconds ago (german)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234567830,
+                    units: 's',
+                    lang: 'de'
+                }), 'vor 1 Minute');
+            });
+
+            test('get returns vor 59 Minuten when time is 3,599 seconds ago (german)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234564291,
+                    units: 's',
+                    lang: 'de'
+                }), 'vor 59 Minuten');
+            });
+
+            test('get returns vor 1 Stunde when time is 3,600 seconds ago (german)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234564290,
+                    units: 's',
+                    lang: 'de'
+                }), 'vor 1 Stunde');
+            });
+
+            test('get returns vor 23 Stunden when time is 86,399 seconds ago (german)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234481491,
+                    units: 's',
+                    lang: 'de'
+                }), 'vor 23 Stunden');
+            });
+
+            test('get returns vor 1 Tag when time is 86,400 seconds ago (german)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234481490,
+                    units: 's',
+                    lang: 'de'
+                }), 'vor 1 Tag');
+            });
+
+            test('get returns vor 6 Tagen when time is 604,799 seconds ago (german)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1233963091,
+                    units: 's',
+                    lang: 'de'
+                }), 'vor 6 Tagen');
+            });
+
+            test('get returns vor 1 Woche when time is 604,800 seconds ago (german)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1233963090,
+                    units: 's',
+                    lang: 'de'
+                }), 'vor 1 Woche');
+            });
+
+            test('get returns vor 4 Wochen when time is 2,629,799 seconds ago (german)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1231938091,
+                    units: 's',
+                    lang: 'de'
+                }), 'vor 4 Wochen');
+            });
+
+            test('get returns vor 1 Monat when time is 2,629,800 seconds ago (german)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1231938090,
+                    units: 's',
+                    lang: 'de'
+                }), 'vor 1 Monat');
+            });
+
+            test('get returns vor 11 Monaten when time is 31,557,599 seconds ago (german)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1203010291,
+                    units: 's',
+                    lang: 'de'
+                }), 'vor 11 Monaten');
+            });
+
+            test('get returns vor 1 Jahr when time is 31,557,600 seconds ago (german)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1203010290,
+                    units: 's',
+                    lang: 'de'
+                }), 'vor 1 Jahr');
+            });
+
+            test('get returns vor 2 Jahren when time is 63,115,200 seconds ago (german)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1171452690,
+                    units: 's',
+                    lang: 'de'
+                }), 'vor 2 Jahren');
+            });
+
+            test('get returns jetzt gerade when time is 59,000 milliseconds ago (german)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890000,
+                    to: 1234567831000,
+                    units: 'ms',
+                    lang: 'de'
+                }), 'jetzt gerade');
+            });
 
             test('get returns soon when times are equal', function () {
                 assert.strictEqual(vagueTime.get({
