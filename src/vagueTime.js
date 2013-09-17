@@ -17,13 +17,7 @@
         minute: 60000 // 1000 ms * 60 s
     },
 
-    functions = {
-        get: getVagueTime
-    };
-
-    exportFunctions();
-    
-    var languages = {
+    languages = {
         en: {
             year:   ['year',   'years'],
             month:  ['month',  'months'],
@@ -31,7 +25,7 @@
             day:    ['day',    'days'],
             hour:   ['hour', 'hours'],
             minute: ['minute', 'minutes'],
-            
+
             past: function (vagueTime, unit) {
                 return vagueTime + ' ' + unit + ' ago';
             },
@@ -39,7 +33,7 @@
             future: function (vagueTime, unit) {
                 return 'in ' + vagueTime + ' ' + unit;
             },
-                    
+
             defaults: {
                 past: 'just now',
                 future: 'soon'
@@ -52,7 +46,7 @@
             day:    ['Tag',    'Tagen'],
             hour:   ['Stunde', 'Stunden'],
             minute: ['Minute', 'Minuten'],
-            
+
             past: function (vagueTime, unit) {
                 return 'vor ' + vagueTime + ' ' + unit;
             },
@@ -60,13 +54,19 @@
             future: function (vagueTime, unit) {
                 return 'in ' + vagueTime + ' ' + unit;
             },
-                    
+
             defaults: {
                 past: 'jetzt gerade',
                 future: 'bald'
             }
-        },
-    }
+        }
+    },
+
+    functions = {
+        get: getVagueTime
+    };
+
+    exportFunctions();
 
     /**
      * Public function `get`.
@@ -140,17 +140,16 @@
     }
 
     function estimate (difference, type, language) {
-        var time, vagueTime;
-        var l = languages[language] || languages.en;
+        var time, vagueTime, lang = languages[language] || languages.en;
 
         for (time in times) {
             if (times.hasOwnProperty(time) && difference >= times[time]) {
                 vagueTime = Math.floor(difference / times[time]);
-                return l[type](vagueTime, l[time][(vagueTime > 1)+0]);
+                return lang[type](vagueTime, lang[time][(vagueTime > 1)+0]);
             }
         }
 
-        return l.defaults[type];
+        return lang.defaults[type];
     }
 
     function exportFunctions () {
