@@ -1,11 +1,18 @@
-/*globals require, exports */
+/*globals require, chai */
 
-(function () {
+(function (require) {
     'use strict';
 
-    var assert = require('chai').assert,
+    var assert, modulePath;
 
-    modulePath = '../src/vagueTime';
+    if (typeof require === 'undefined') {
+        assert = chai.assert;
+        require = function () { return vagueTime; };
+    } else {
+        assert = require('chai').assert;
+        modulePath = '../src/vagueTime';
+    }
+
 
     suite('vagueTime:', function () {
         test('require does not throw', function () {
@@ -278,7 +285,7 @@
                     units: 'ms'
                 }), '2 years ago');
             });
-            
+
             test('get returns jetzt gerade when time is 1 second ago (german)', function () {
                 assert.strictEqual(vagueTime.get({
                     from: 1234567890,
@@ -483,5 +490,5 @@
             });
         });
     });
-}());
+}(typeof require === 'function' ? require : undefined));
 
