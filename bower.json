@@ -1,0 +1,16 @@
+{
+    "name": "vague-time",
+    "version": "0.5.5",
+    "main": "./src/vagueTime.min.js",
+    "ignore": [
+        "AUTHORS",
+        "component.json",
+        "config",
+        "node_modules",
+        "package.json",
+        "README.md",
+        "src/vagueTime.js",
+        "test"
+    ]
+}
+
