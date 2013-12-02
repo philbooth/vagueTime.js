@@ -48,7 +48,7 @@ or Tim Wood's [moment].
 
 ## How tiny is it?
 
-? kb unminified with comments, ? kb minified, ? kb minified + gzipped
+4.7 kb unminified with comments, 1.5 kb minified, 0.8 kb minified + gzipped
 
 ## How do I install it?
 
