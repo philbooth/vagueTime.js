@@ -4,6 +4,7 @@
     "description": "A tiny library that formats precise time differences as a vague/fuzzy time, e.g. '3 months ago', 'just now' or 'in 2 hours'.",
     "repo": "philbooth/vagueTime.js",
     "license": "MIT",
+    "main": "src/vagueTime.js",
     "keywords": [
         "time",
         "date",
@@ -12,7 +13,7 @@
         "estimate"
     ],
     "scripts": [
-        "src/vagueTime.min.js"
+        "src/vagueTime.js"
     ]
 }
 
