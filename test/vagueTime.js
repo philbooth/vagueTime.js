@@ -421,6 +421,141 @@
                 }), 'jetzt gerade');
             });
 
+            test('get returns tout de suite when time is 1 second ago (french)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234567889,
+                    units: 's',
+                    lang: 'fr'
+                }), 'tout de suite');
+            });
+
+            test('get returns tout de suite when time is 59 seconds ago (french)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234567831,
+                    units: 's',
+                    lang: 'fr'
+                }), 'tout de suite');
+            });
+
+            test('get returns il y a 1 minute when time is 60 seconds ago (french)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234567830,
+                    units: 's',
+                    lang: 'fr'
+                }), 'il y a 1 minute');
+            });
+
+            test('get returns il y a 59 minutes when time is 3,599 seconds ago (french)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234564291,
+                    units: 's',
+                    lang: 'fr'
+                }), 'il y a 59 minutes');
+            });
+
+            test('get returns il y a 1 heure when time is 3,600 seconds ago (french)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234564290,
+                    units: 's',
+                    lang: 'fr'
+                }), 'il y a 1 heure');
+            });
+
+            test('get returns il y a 23 heures when time is 86,399 seconds ago (french)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234481491,
+                    units: 's',
+                    lang: 'fr'
+                }), 'il y a 23 heures');
+            });
+
+            test('get returns il y a 1 jour when time is 86,400 seconds ago (french)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234481490,
+                    units: 's',
+                    lang: 'fr'
+                }), 'il y a 1 jour');
+            });
+
+            test('get returns il y a 6 jours when time is 604,799 seconds ago (french)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1233963091,
+                    units: 's',
+                    lang: 'fr'
+                }), 'il y a 6 jours');
+            });
+
+            test('get returns il y a 1 semaine when time is 604,800 seconds ago (french)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1233963090,
+                    units: 's',
+                    lang: 'fr'
+                }), 'il y a 1 semaine');
+            });
+
+            test('get returns il y a 4 semaines when time is 2,629,799 seconds ago (french)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1231938091,
+                    units: 's',
+                    lang: 'fr'
+                }), 'il y a 4 semaines');
+            });
+
+            test('get returns il y a 1 mois when time is 2,629,800 seconds ago (french)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1231938090,
+                    units: 's',
+                    lang: 'fr'
+                }), 'il y a 1 mois');
+            });
+
+            test('get returns il y a 11 mois when time is 31,557,599 seconds ago (french)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1203010291,
+                    units: 's',
+                    lang: 'fr'
+                }), 'il y a 11 mois');
+            });
+
+            test('get returns il y a 1 an when time is 31,557,600 seconds ago (french)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1203010290,
+                    units: 's',
+                    lang: 'fr'
+                }), 'il y a 1 an');
+            });
+
+            test('get returns il y a 2 ans when time is 63,115,200 seconds ago (french)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1171452690,
+                    units: 's',
+                    lang: 'fr'
+                }), 'il y a 2 ans');
+            });
+
+            test('get returns tout de suite when time is 59,000 milliseconds ago (french)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890000,
+                    to: 1234567831000,
+                    units: 'ms',
+                    lang: 'fr'
+                }), 'tout de suite');
+            });
+
             test('get returns soon when times are equal', function () {
                 assert.strictEqual(vagueTime.get({
                     from: 1234567890,
