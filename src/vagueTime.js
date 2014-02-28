@@ -153,7 +153,7 @@
     }
 
     function isNotDate (date) {
-        return Object.prototype.toString.call(date) !== "[object Date]" || isNaN(date.getTime());
+        return Object.prototype.toString.call(date) !== '[object Date]' || isNaN(date.getTime());
     }
 
     function isNotTimestamp (timestamp) {
