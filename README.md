@@ -6,7 +6,7 @@ A tiny JavaScript library
 that formats precise time differences
 as a vague/fuzzy time,
 e.g. '3 months ago', 'just now' or 'in 2 hours'.
-Supports both English and German phrases.
+Supports English, German and French phrases.
 
 * [Why would I want that?](#why-would-i-want-that)
 * [What alternative libraries are there?](#what-alternative-libraries-are-there)
@@ -32,7 +32,7 @@ for translating timestamps
 into those user-friendly phrases,
 heavily supported by unit tests.
 Vague time strings can be returned
-in both English and German.
+in English, German or French.
 
 ## What alternative libraries are there?
 
@@ -129,8 +129,9 @@ The arguments are passed as properties
   rather than timestamps.
 * `lang`:
   string denoting the output language.
-  May be `'en'` (English)
-  or `'de'` (German).
+  May be `'en'` (English),
+  `'de'` (German)
+  or `'fr'` (French).
   Defaults to `'en'`.
 
 Essentially,
@@ -170,10 +171,23 @@ vagueTime.get({
 }); // returns 'vor 2 Stunden'
 
 vagueTime.get({
-    from: new Date(2013, 0, 1),
-	to: new Date(2012, 11, 31),
+    from: new Date(2015, 0, 3),
+	to: new Date(2014, 11, 31),
 	lang: 'de'
-}); // returns 'in 1 Tag'
+}); // returns 'in 3 Tagen'
+
+vagueTime.get({
+    from: 0,
+    to: 259200,
+	units: 's',
+	lang: 'de'
+}); // returns 'il y a 3 jours'
+
+vagueTime.get({
+    from: new Date(2015, 0, 27),
+	to: new Date(2014, 11, 31),
+	lang: 'de'
+}); // returns 'dans 4 semaines'
 ```
 
 ## How do I set up the build environment?
