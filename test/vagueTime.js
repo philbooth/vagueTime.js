@@ -340,6 +340,24 @@
                 }), '1 minut siden');
             });
 
+            test('get returns juist nu when time is 1 second ago (dutch)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234567889,
+                    units: 's',
+                    lang: 'nl'
+                }), 'juist nu');
+            });
+
+            test('get returns 1 minuut geleden when time is 60,000 milliseconds ago (dutch)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890000,
+                    to: 1234567830000,
+                    units: 'ms',
+                    lang: 'nl'
+                }), '1 minuut geleden');
+            });
+
             test('get returns soon when times are equal', function () {
                 assert.strictEqual(vagueTime.get({
                     from: 1234567890,
@@ -426,6 +444,15 @@
                     units: 's',
                     lang: 'da'
                 }), 'i 1 time');
+            });
+
+            test('get returns in 1 uur when time is 3,600 seconds ahead (dutch)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234571490,
+                    units: 's',
+                    lang: 'nl'
+                }), 'in 1 uur');
             });
 
             test('from defaults to soon', function () {

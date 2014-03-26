@@ -101,6 +101,27 @@
                 past: 'lige nu',
                 future: 'snart'
             }
+        },
+        nl: {
+            year:   ['jaar',   'jaar'],
+            month:  ['maand',  'maanden'],
+            week:   ['week',   'weeken'],
+            day:    ['dag',    'dagen'],
+            hour:   ['uur',    'uur'],
+            minute: ['minuut', 'minuten'],
+
+            past: function (vagueTime, unit) {
+                return vagueTime + ' ' + unit + ' geleden';
+            },
+
+            future: function (vagueTime, unit) {
+                return 'in ' + vagueTime + ' ' + unit;
+            },
+
+            defaults: {
+                past: 'juist nu',
+                future: 'spoedig'
+            }
         }
     },
 
