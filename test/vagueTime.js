@@ -437,22 +437,22 @@
                 }), 'dans 1 jour');
             });
 
-            test('get returns i 1 time when time is 3,600 seconds ahead (danish)', function () {
+            test('get returns om 1 time when time is 3,600 seconds ahead (danish)', function () {
                 assert.strictEqual(vagueTime.get({
                     from: 1234567890,
                     to: 1234571490,
                     units: 's',
                     lang: 'da'
-                }), 'i 1 time');
+                }), 'om 1 time');
             });
 
-            test('get returns in 1 uur when time is 3,600 seconds ahead (dutch)', function () {
+            test('get returns over 1 uur when time is 3,600 seconds ahead (dutch)', function () {
                 assert.strictEqual(vagueTime.get({
                     from: 1234567890,
                     to: 1234571490,
                     units: 's',
                     lang: 'nl'
-                }), 'in 1 uur');
+                }), 'over 1 uur');
             });
 
             test('from defaults to soon', function () {

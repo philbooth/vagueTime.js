@@ -94,7 +94,7 @@
             },
 
             future: function (vagueTime, unit) {
-                return 'i ' + vagueTime + ' ' + unit;
+                return 'om ' + vagueTime + ' ' + unit;
             },
 
             defaults: {
@@ -105,7 +105,7 @@
         nl: {
             year:   ['jaar',   'jaar'],
             month:  ['maand',  'maanden'],
-            week:   ['week',   'weeken'],
+            week:   ['week',   'weken'],
             day:    ['dag',    'dagen'],
             hour:   ['uur',    'uur'],
             minute: ['minuut', 'minuten'],
@@ -115,12 +115,12 @@
             },
 
             future: function (vagueTime, unit) {
-                return 'in ' + vagueTime + ' ' + unit;
+                return 'over ' + vagueTime + ' ' + unit;
             },
 
             defaults: {
                 past: 'juist nu',
-                future: 'spoedig'
+                future: 'binnenkort'
             }
         }
     },
