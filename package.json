@@ -27,6 +27,13 @@
     },
     "scripts": {
         "lint": "./node_modules/.bin/jshint ./src/vagueTime.js --config config/jshint.json",
+        "build": "npm run build-da && npm run build-de && npm run build-en && npm run build-fr && npm run build-nl && npm run build-all",
+        "build-da": "./build.js -l da",
+        "build-de": "./build.js -l de",
+        "build-en": "./build.js -l en",
+        "build-fr": "./build.js -l fr",
+        "build-nl": "./build.js -l nl",
+        "build-all": "./build.js",
         "test": "./node_modules/.bin/mocha --ui tdd --reporter spec --colors ./test/vagueTime.js",
         "minify": "./node_modules/.bin/uglifyjs ./src/vagueTime.js --compress --mangle --output ./src/vagueTime.min.js"
     }
