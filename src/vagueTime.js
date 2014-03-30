@@ -18,111 +18,7 @@
     },
 
     languages = {
-        en: {
-            year:   ['year',   'years'],
-            month:  ['month',  'months'],
-            week:   ['week',   'weeks'],
-            day:    ['day',    'days'],
-            hour:   ['hour', 'hours'],
-            minute: ['minute', 'minutes'],
-
-            past: function (vagueTime, unit) {
-                return vagueTime + ' ' + unit + ' ago';
-            },
-
-            future: function (vagueTime, unit) {
-                return 'in ' + vagueTime + ' ' + unit;
-            },
-
-            defaults: {
-                past: 'just now',
-                future: 'soon'
-            }
-        },
-        de: {
-            year:   ['Jahr',   'Jahren'],
-            month:  ['Monat',  'Monaten'],
-            week:   ['Woche',  'Wochen'],
-            day:    ['Tag',    'Tagen'],
-            hour:   ['Stunde', 'Stunden'],
-            minute: ['Minute', 'Minuten'],
-
-            past: function (vagueTime, unit) {
-                return 'vor ' + vagueTime + ' ' + unit;
-            },
-
-            future: function (vagueTime, unit) {
-                return 'in ' + vagueTime + ' ' + unit;
-            },
-
-            defaults: {
-                past: 'jetzt gerade',
-                future: 'bald'
-            }
-        },
-        fr: {
-            year:   ['an',      'ans'],
-            month:  ['mois',    'mois'],
-            week:   ['semaine', 'semaines'],
-            day:    ['jour',    'jours'],
-            hour:   ['heure',   'heures'],
-            minute: ['minute',  'minutes'],
-
-            past: function (vagueTime, unit) {
-                return 'il y a ' + vagueTime + ' ' + unit;
-            },
-
-            future: function (vagueTime, unit) {
-                return 'dans ' + vagueTime + ' ' + unit;
-            },
-
-            defaults: {
-                past: 'tout de suite',
-                future: 'bientôt'
-            }
-        },
-        da: {
-            year:   ['år',    'år'],
-            month:  ['måned', 'måneder'],
-            week:   ['uge',   'uger'],
-            day:    ['dag',   'dage'],
-            hour:   ['time',  'timer'],
-            minute: ['minut', 'minutter'],
-
-            past: function (vagueTime, unit) {
-                return vagueTime + ' ' + unit + ' siden';
-            },
-
-            future: function (vagueTime, unit) {
-                return 'om ' + vagueTime + ' ' + unit;
-            },
-
-            defaults: {
-                past: 'lige nu',
-                future: 'snart'
-            }
-        },
-        nl: {
-            year:   ['jaar',   'jaar'],
-            month:  ['maand',  'maanden'],
-            week:   ['week',   'weken'],
-            day:    ['dag',    'dagen'],
-            hour:   ['uur',    'uur'],
-            minute: ['minuut', 'minuten'],
-
-            past: function (vagueTime, unit) {
-                return vagueTime + ' ' + unit + ' geleden';
-            },
-
-            future: function (vagueTime, unit) {
-                return 'over ' + vagueTime + ' ' + unit;
-            },
-
-            defaults: {
-                past: 'juist nu',
-                future: 'binnenkort'
-            }
-        }
+//#include languages
     },
 
     functions = {
@@ -142,7 +38,8 @@
      *                          instances, this indicates the units that they are
      *                          measured in. Can be either `ms` for milliseconds
      *                          or `s` for seconds. Defaults to `ms`.
-     * @option [lang] {string}  The output language. Defaults to `en`.
+     * @option [lang] {string}  The output language. Defaults to the first listed
+     *                          language from the built set.
      */
     function getVagueTime (options) {
         var units = normaliseUnits(options.units),
