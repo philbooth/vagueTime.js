@@ -6,7 +6,7 @@
     "bugs": "https://github.com/philbooth/vagueTime.js/issues",
     "license": "MIT",
     "author": "Phil Booth <pmbooth@gmail.com> (https://github.com/philbooth)",
-    "main": "./src/vagueTime",
+    "main": "./lib/vagueTime",
     "repository": {
         "type": "git",
         "url": "https://github.com/philbooth/vagueTime.js.git"
