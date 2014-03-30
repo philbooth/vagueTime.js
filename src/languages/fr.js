@@ -1,4 +1,4 @@
-        {
+    fr: {
             year: [ 'an', 'ans' ],
             month: [ 'mois', 'mois' ],
             week: [ 'semaine', 'semaines' ],

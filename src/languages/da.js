@@ -1,4 +1,4 @@
-        {
+    da: {
             year: [ 'år', 'år' ],
             month: [ 'måned', 'måneder' ],
             week: [ 'uge', 'uger' ],

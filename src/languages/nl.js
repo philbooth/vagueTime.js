@@ -1,4 +1,4 @@
-        {
+    nl: {
             year: [ 'jaar', 'jaar' ],
             month: [ 'maand', 'maanden' ],
             week: [ 'week', 'weken' ],
