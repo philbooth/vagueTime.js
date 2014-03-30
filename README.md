@@ -6,7 +6,7 @@ A tiny JavaScript library
 that formats precise time differences
 as a vague/fuzzy time,
 e.g. '3 months ago', 'just now' or 'in 2 hours'.
-Supports English, German and French phrases.
+Supports English, German, French, Dutch and Danish phrases.
 
 * [Why would I want that?](#why-would-i-want-that)
 * [What alternative libraries are there?](#what-alternative-libraries-are-there)
@@ -16,7 +16,7 @@ Supports English, German and French phrases.
     * [Loading the library](#loading-the-library)
     * [Calling the exported functions](#calling-the-exported-functions)
     * [Examples](#examples)
-* [How do I set up the build environment?](#how-do-i-set-up-the-build-environment)
+* [How do I build it?](#how-do-i-build-it)
 * [What license is it released under?](#what-license-is-it-released-under)
 
 ## Why would I want that?
@@ -32,23 +32,30 @@ for translating timestamps
 into those user-friendly phrases,
 heavily supported by unit tests.
 Vague time strings can be returned
-in English, German or French.
+in English, German, French, Dutch or Danish.
 
 ## What alternative libraries are there?
 
-If this project isn't quite what you're looking for,
-you may be interested in vagueTime's big sister,
-[vagueDate.js][vague-date].
-Or if you would like
-to parse vague time strings
-rather than generate them,
-you should try
-Matthew Mueller's [date]
-or Tim Wood's [moment].
+* [date.js][date];
+* [moment.js][moment];
+* [xdate];
+* [countdown.js][countdown].
 
 ## How tiny is it?
 
-5.4 kb unminified with comments, 1.8 kb minified, 0.8 kb minified + gzipped
+The library can be built
+with support for any combination
+of English, German, French, Dutch and Danish languages.
+Single-language builds
+are typically around
+4.3 kb unminified with comments,
+1.3 kb minified
+or 0.7 kb minified + gzipped.
+
+The largest build,
+containing all supported languages,
+is 6.8 kb unminified with comments, 2.3 kb minified
+or 1 kb minified + gzipped.
 
 ## How do I install it?
 
@@ -70,7 +77,7 @@ git clone git@github.com:philbooth/vagueTime.js.git
 
 ### Loading the library
 
-f you are running in
+If you are running in
 [Node.js][node],
 [Browserify]
 or another CommonJS-style
@@ -89,13 +96,19 @@ preferred by [Require.js][require]:
 ```javascript
 require.config({
     paths: {
-        vague-time: 'vagueTime.js/src/vagueTime'
+        vague-time: 'vagueTime.js/lib/vagueTime'
     }
 });
 
 require([ 'vague-time' ], function (vagueTime) {
 });
 ```
+
+The default module
+contains all of the supported languages,
+if you want to load a custom build
+you must make sure
+that you reference that build explicitly.
 
 If you are
 including vagueTime.js
@@ -130,9 +143,11 @@ The arguments are passed as properties
 * `lang`:
   string denoting the output language.
   May be `'en'` (English),
-  `'de'` (German)
-  or `'fr'` (French).
-  Defaults to `'en'`.
+  `'de'` (German),
+  `'fr'` (French),
+  `'nl'` (Dutch)
+  or `'da'` (Danish).
+  The default is set by the build options.
 
 Essentially,
 if `to` is less than `from`,
@@ -148,60 +163,72 @@ some point in the future.
 vagueTime.get({
     from: 60,
     to: 0,
-	units: 's'
+    units: 's'
 }); // returns '1 minute ago'
 
 vagueTime.get({
     from: 0,
     to: 60,
-	units: 's'
+    units: 's'
 }); // returns 'in 1 minute'
 
 vagueTime.get({
     from: 7200,
     to: 0,
-	units: 's'
+    units: 's'
 }); // returns '2 hours ago'
 
 vagueTime.get({
     from: 0,
     to: 7200,
-	units: 's',
-	lang: 'de'
+    units: 's',
+    lang: 'de'
 }); // returns 'vor 2 Stunden'
 
 vagueTime.get({
     from: new Date(2015, 0, 3),
-	to: new Date(2014, 11, 31),
-	lang: 'de'
+    to: new Date(2014, 11, 31),
+    lang: 'de'
 }); // returns 'in 3 Tagen'
 
 vagueTime.get({
     from: 0,
     to: 259200,
-	units: 's',
-	lang: 'de'
+    units: 's',
+    lang: 'fr'
 }); // returns 'il y a 3 jours'
 
 vagueTime.get({
     from: new Date(2015, 0, 27),
-	to: new Date(2014, 11, 31),
-	lang: 'de'
+    to: new Date(2014, 11, 31),
+    lang: 'fr'
 }); // returns 'dans 4 semaines'
 ```
 
-## How do I set up the build environment?
+## How do I build it?
 
 The build environment relies on
 Node.js,
 [NPM],
 [JSHint],
+[Commander]
 [Mocha],
 [Chai] and
 [UglifyJS].
 Assuming that you already have Node/NPM set up,
 you just need to run `npm install`
 to install all of the dependencies as listed in `package.json`.
+
+You can then lint the source module
+with the command `npm run lint`.
+
+You can run the standard build process
+with the command `npm run build`
+or run a custom build using the build script:
+
+```
+./build.js -l <comma-separated list of language codes> -d <default language code>
+```
 
 The unit tests are in `test/vagueTime.js`.
 You can run them with the command `npm test`.
@@ -215,13 +242,16 @@ open `test/vagueTime.html`.
 [ci-image]: https://secure.travis-ci.org/philbooth/vagueTime.js.png?branch=master
 [ci-status]: http://travis-ci.org/#!/philbooth/vagueTime.js
 [vague-date]: https://github.com/philbooth/vagueDate.js
-[date]: https://github.com/MatthewMueller/date
-[moment]: https://github.com/timrwood/moment
+[date]: http://www.datejs.com/
+[moment]: http://momentjs.com/
+[xdate]: http://arshaw.com/xdate
+[countdown]: http://countdownjs.org/
 [node]: http://nodejs.org/
 [browserify]: http://browserify.org/
 [require]: http://requirejs.org/
 [npm]: https://npmjs.org/
 [jshint]: https://github.com/jshint/node-jshint
+[commander]: https://github.com/visionmedia/commander.js
 [mocha]: http://visionmedia.github.com/mocha
 [chai]: http://chaijs.com/
 [uglifyjs]: https://github.com/mishoo/UglifyJS

@@ -19,8 +19,8 @@
         "estimate"
     ],
     "devDependencies": {
-        "commander": "2.2.x",
         "jshint": "2.4.x",
+        "commander": "2.2.x",
         "mocha": "1.17.x",
         "chai": "1.9.x",
         "uglify-js": "2.4.x"
