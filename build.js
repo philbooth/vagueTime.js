@@ -36,7 +36,8 @@ function build() {
 
 function parseCommandLine () {
     cli.usage('[options]')
-       .option('-l, --language <languages>', 'comma-separated list of 2-character language codes, or `all` for all defined (default)');
+       .option('-l, --language <languages>', 'comma-separated list of 2-character language codes, or `all` for all defined (default)')
+       .parse(process.argv);
 }
 
 
