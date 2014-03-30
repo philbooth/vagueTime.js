@@ -10,7 +10,7 @@
         require = function () { return vagueTime; };
     } else {
         assert = require('chai').assert;
-        modulePath = '../src/vagueTime';
+        modulePath = '../lib/vagueTime';
     }
 
 
