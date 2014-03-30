@@ -35,7 +35,7 @@
         "build-nl": "./build.js -l nl",
         "build-all": "./build.js",
         "test": "./node_modules/.bin/mocha --ui tdd --reporter spec --colors ./test/vagueTime.js",
-        "minify": "./node_modules/.bin/uglifyjs ./src/vagueTime.js --compress --mangle --output ./src/vagueTime.min.js"
+        "minify": "./node_modules/.bin/uglifyjs ./lib/vagueTime.js --compress --mangle --output ./lib/vagueTime.min.js"
     }
 }
 
