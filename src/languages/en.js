@@ -1,4 +1,4 @@
-    en: {
+        en: {
             year: [ 'year', 'years' ],
             month: [ 'month', 'months' ],
             week: [ 'week', 'weeks' ],

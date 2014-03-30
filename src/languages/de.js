@@ -1,4 +1,4 @@
-    de: {
+        de: {
             year: [ 'Jahr', 'Jahren' ],
             month: [ 'Monat', 'Monaten' ],
             week: [ 'Woche', 'Wochen' ],
