@@ -26,9 +26,12 @@ function build() {
     checkLanguages(languages);
 
     writeLibrary(
-        injectLanguageModules(
-            readMainModule(),
-            readLanguageModules(languages)
+        injectDefaultLanguage(
+            injectLanguageModules(
+                readMainModule(),
+                readLanguageModules(languages)
+            ),
+            cli.default || languages[0]
         ),
         isUniversalBuild() ? '' : '-' + languages.join('-')
     );
@@ -37,9 +40,9 @@ function build() {
 function parseCommandLine () {
     cli.usage('[options]')
        .option('-l, --language <languages>', 'comma-separated list of 2-character language codes, or `all` for all defined (default)')
+       .option('-d, --default <language>', '2-character language code of the default language, defaults to the first specified/detected')
        .parse(process.argv);
 }
-
 
 function getLanguages () {
     if (isUniversalBuild()) {
@@ -95,14 +98,22 @@ function readLanguageModules (languages) {
     return modules;
 }
 
-function injectLanguageModules (main, modules) {
-    var split = main.split('//#include languages');
+function injectLanguageModules (script, modules) {
+    return inject(script, 'languages', modules.join(',\n'));
+}
+
+function inject (script, splitPoint, injection) {
+    var split = script.split('/*#' + splitPoint + '*/');
 
     if (split.length !== 2) {
-        throw new Error('Injection point error.');
+        throw new Error('Injection point error: ' + splitPoint);
     }
 
-    return split[0] + modules.join(',\n') + split[1];
+    return split[0] + injection + split[1];
+}
+
+function injectDefaultLanguage (script, defaultLanguage) {
+    return inject(script, 'defaultLanguage', ' = \'' + defaultLanguage + '\'');
 }
 
 function writeLibrary (library, suffix) {

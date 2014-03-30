@@ -18,8 +18,10 @@
     },
 
     languages = {
-//#include languages
+/*#languages*/
     },
+
+    defaultLanguage/*#defaultLanguage*/,
 
     functions = {
         get: getVagueTime
@@ -38,8 +40,8 @@
      *                          instances, this indicates the units that they are
      *                          measured in. Can be either `ms` for milliseconds
      *                          or `s` for seconds. Defaults to `ms`.
-     * @option [lang] {string}  The output language. Defaults to the first listed
-     *                          language from the built set.
+     * @option [lang] {string}  The output language. Default is specified as a
+     *                          build option.
      */
     function getVagueTime (options) {
         var units = normaliseUnits(options.units),
@@ -100,7 +102,7 @@
     }
 
     function estimate (difference, type, language) {
-        var time, vagueTime, lang = languages[language] || languages.en;
+        var time, vagueTime, lang = languages[language] || languages[defaultLanguage];
 
         for (time in times) {
             if (times.hasOwnProperty(time) && difference >= times[time]) {
