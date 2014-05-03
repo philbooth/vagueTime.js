@@ -358,12 +358,12 @@
                 }), '1 minuut geleden');
             });
 
-            test('get returns soon when times are equal', function () {
+            test('get returns just now when times are equal', function () {
                 assert.strictEqual(vagueTime.get({
                     from: 1234567890,
                     to: 1234567890,
                     units: 's'
-                }), 'soon');
+                }), 'just now');
             });
 
             test('get accepts string arguments', function () {
@@ -371,7 +371,7 @@
                     from: '1234567890',
                     to: '1234567890',
                     units: 's'
-                }), 'soon');
+                }), 'just now');
             });
 
             test('get accepts date arguments', function () {
@@ -396,11 +396,11 @@
                 }), '1 minute ago');
             });
 
-            test('until defaults to soon', function () {
+            test('until defaults to just now', function () {
                 assert.include(vagueTime.get({
                     to: Date.now(),
                     units: 'ms'
-                }), 'soon');
+                }), 'just now');
             });
 
             test('get returns soon when time is 59 seconds ahead', function () {
@@ -455,11 +455,11 @@
                 }), 'over 1 uur');
             });
 
-            test('from defaults to soon', function () {
+            test('from defaults to just now', function () {
                 assert.include(vagueTime.get({
                     to: Date.now(),
                     units: 'ms'
-                }), 'soon');
+                }), 'just now');
             });
         });
     });

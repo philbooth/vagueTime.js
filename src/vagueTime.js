@@ -51,7 +51,7 @@
             difference = from - to,
             type;
 
-        if (difference > 0) {
+        if (difference >= 0) {
             type = 'past';
         } else {
             type = 'future';
