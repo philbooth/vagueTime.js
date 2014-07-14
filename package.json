@@ -27,7 +27,7 @@
     },
     "scripts": {
         "lint": "./node_modules/.bin/jshint ./src/vagueTime.js --config config/jshint.json",
-        "build": "npm run build-da && npm run build-de && npm run build-en && npm run build-fr && npm run build-nl && npm run build-enda && npm run build-ende && npm run build-enfr && npm run build-ennl && npm run build-all",
+        "build": "npm run build-da && npm run build-de && npm run build-en && npm run build-fr && npm run build-nl && npm run build-jp && npm run build-ko && npm run build-zh && npm run build-enda && npm run build-ende && npm run build-enfr && npm run build-ennl && npm run build-enjp && npm run build-enko && npm run build-enzh && npm run build-jpkozh && npm run build-all",
         "build-da": "./build.js -l da",
         "build-de": "./build.js -l de",
         "build-en": "./build.js -l en",
