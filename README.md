@@ -5,7 +5,7 @@
 A tiny, multi-lingual JavaScript library
 that formats precise time differences
 as a vague/fuzzy time,
-e.g. '3 months ago', 'just now' or 'in 2 hours'.
+e.g. 'just now' or 'in 2 hours'.
 Supports English, German, French, Dutch, Danish, Japanese, Korean and Chinese phrases.
 
 * [Why would I want that?](#why-would-i-want-that)
@@ -24,7 +24,7 @@ Supports English, German, French, Dutch, Danish, Japanese, Korean and Chinese ph
 Displaying precise dates and times
 can give a website a formal and officious feel.
 Using fuzzy or vague time phrases
-like 'just now' or '2 days ago'
+like 'just now' or '3 days ago'
 can contribute to a much friendlier interface.
 
 vagueTime.js provides a small, clean API
