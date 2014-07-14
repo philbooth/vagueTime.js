@@ -1,6 +1,6 @@
 {
     "name": "vague-time",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "A tiny, multi-lingual library that formats precise time differences as a vague/fuzzy time, e.g. 'just now' or 'in 2 hours'.",
     "homepage": "https://github.com/philbooth/vagueTime.js",
     "bugs": "https://github.com/philbooth/vagueTime.js/issues",
