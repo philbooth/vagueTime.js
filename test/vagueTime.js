@@ -358,6 +358,60 @@
                 }), '1 minuut geleden');
             });
 
+            test('get returns juist nu when time is 1 second ago (japanese)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234567889,
+                    units: 's',
+                    lang: 'jp'
+                }), '今');
+            });
+
+            test('get returns 1 minuut geleden when time is 60,000 milliseconds ago (japanese)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890000,
+                    to: 1234567830000,
+                    units: 'ms',
+                    lang: 'jp'
+                }), '1 分前');
+            });
+
+            test('get returns juist nu when time is 1 second ago (korean)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234567889,
+                    units: 's',
+                    lang: 'ko'
+                }), '지금');
+            });
+
+            test('get returns 1 minuut geleden when time is 60,000 milliseconds ago (korean)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890000,
+                    to: 1234567830000,
+                    units: 'ms',
+                    lang: 'ko'
+                }), '1 분 전');
+            });
+
+            test('get returns juist nu when time is 1 second ago (chinese)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234567889,
+                    units: 's',
+                    lang: 'zh'
+                }), '刚刚');
+            });
+
+            test('get returns 1 minuut geleden when time is 60,000 milliseconds ago (chinese)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890000,
+                    to: 1234567830000,
+                    units: 'ms',
+                    lang: 'zh'
+                }), '1 分钟 之前');
+            });
+
             test('get returns just now when times are equal', function () {
                 assert.strictEqual(vagueTime.get({
                     from: 1234567890,
@@ -437,22 +491,49 @@
                 }), 'dans 1 jour');
             });
 
-            test('get returns om 1 time when time is 3,600 seconds ahead (danish)', function () {
+            test('get returns om 1 time when time is 2,629,800 seconds ahead (danish)', function () {
                 assert.strictEqual(vagueTime.get({
                     from: 1234567890,
-                    to: 1234571490,
+                    to: 1237197690,
                     units: 's',
                     lang: 'da'
-                }), 'om 1 time');
+                }), 'om 1 måned');
             });
 
-            test('get returns over 1 uur when time is 3,600 seconds ahead (dutch)', function () {
+            test('get returns over 1 uur when time is 31,557,600 seconds ahead (dutch)', function () {
                 assert.strictEqual(vagueTime.get({
                     from: 1234567890,
-                    to: 1234571490,
+                    to: 1266125490,
                     units: 's',
                     lang: 'nl'
-                }), 'over 1 uur');
+                }), 'over 1 jaar');
+            });
+
+            test('get returns over 1 uur when time is 63,115,200 seconds ahead (japanese)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1266125490,
+                    units: 's',
+                    lang: 'jp'
+                }), '1 年後');
+            });
+
+            test('get returns over 1 uur when time is 1 second ahead (korean)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1266125490,
+                    units: 's',
+                    lang: 'ko'
+                }), '1 년 후');
+            });
+
+            test('get returns over 1 uur when time is 59 seconds ahead (chinese)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1266125490,
+                    units: 's',
+                    lang: 'zh'
+                }), 'in 1 年');
             });
 
             test('from defaults to just now', function () {
