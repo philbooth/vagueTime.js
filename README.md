@@ -2,11 +2,11 @@
 
 [![Build status][ci-image]][ci-status]
 
-A tiny JavaScript library
+A tiny, multi-lingual JavaScript library
 that formats precise time differences
 as a vague/fuzzy time,
 e.g. '3 months ago', 'just now' or 'in 2 hours'.
-Supports English, German, French, Dutch and Danish phrases.
+Supports English, German, French, Dutch, Danish, Japanese, Korean and Chinese phrases.
 
 * [Why would I want that?](#why-would-i-want-that)
 * [What alternative libraries are there?](#what-alternative-libraries-are-there)
@@ -32,7 +32,7 @@ for translating timestamps
 into those user-friendly phrases,
 heavily supported by unit tests.
 Vague time strings can be returned
-in English, German, French, Dutch or Danish.
+in English, German, French, Dutch, Danish, Japanese, Korean or Chinese.
 
 ## What alternative libraries are there?
 
@@ -45,7 +45,7 @@ in English, German, French, Dutch or Danish.
 
 The library can be built
 with support for any combination
-of English, German, French, Dutch and Danish languages.
+of English, German, French, Dutch, Danish, Japanese, Korean and Chinese languages.
 Single-language builds
 are typically around
 4.3 kb unminified with comments,
@@ -54,8 +54,8 @@ or 0.7 kb minified + gzipped.
 
 The largest build,
 containing all supported languages,
-is 6.8 kb unminified with comments, 2.3 kb minified
-or 1 kb minified + gzipped.
+is 8 kb unminified with comments, 3.1 kb minified
+or 1.3 kb minified + gzipped.
 
 ## How do I install it?
 
@@ -128,25 +128,28 @@ The arguments are passed as properties
  on a single options object:
 
 * `from`:
-  timestamp or `Date` instance denoting the origin point from which the vague time will be calculated.
+  Timestamp or `Date` instance denoting the origin point from which the vague time will be calculated.
   Defaults to `Date.now()`.
 * `to`:
-  timestamp or `Date` instance denoting the target point to which the vague time will be calculated.
+  Timestamp or `Date` instance denoting the target point to which the vague time will be calculated.
   Defaults to `Date.now()`.
 * `units`:
-   string denoting the units that the `from` and `to` timestamps are specified in.
+  String denoting the units that the `from` and `to` timestamps are specified in.
   May be `'s'` for seconds or `'ms'` for milliseconds.
   Defaults to `'ms'`.
   This property has no effect
   when `from` and `to` are `Date` instances
   rather than timestamps.
 * `lang`:
-  string denoting the output language.
+  String denoting the output language.
   May be `'en'` (English),
   `'de'` (German),
   `'fr'` (French),
-  `'nl'` (Dutch)
-  or `'da'` (Danish).
+  `'nl'` (Dutch),
+  `'da'` (Danish),
+  `'jp'` (Japanese),
+  `'ko'` (Korean) or
+  `'zh'` (Chinese.
   The default is set by the build options.
 
 Essentially,
