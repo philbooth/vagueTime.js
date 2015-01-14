@@ -52,19 +52,19 @@ Brazilian Portuguese.
 ## How tiny is it?
 
 The library can be built
-with support for any combination
+for any combination
 of the supported languages.
 Single-language builds
 are typically around
 4.3 kb unminified with comments,
-1.3 kb minified
-or 0.7 kb minified + gzipped.
+1.3 kb minified or
+0.7 kb minified+gzipped.
 
 The largest build,
 containing all 9 supported languages,
 is 8.7 kb unminified with comments,
-3.4 kb minified
-or 1.4 kb minified + gzipped.
+3.4 kb minified or
+1.4 kb minified+gzipped.
 
 ## How do I install it?
 
