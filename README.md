@@ -1,12 +1,11 @@
 # vagueTime.js
 
-[![Build status][ci-image]][ci-status]
-
-A tiny, multi-lingual JavaScript library
+A tiny JavaScript library
 that formats precise time differences
-as a vague/fuzzy time,
-e.g. 'just now' or 'in 2 hours'.
-Supports English, German, French, Dutch, Danish, Japanese, Korean and Chinese phrases.
+as a vague/fuzzy time.
+Supports 10 different languages.
+
+[![Build status][ci-image]][ci-status]
 
 * [Why would I want that?](#why-would-i-want-that)
 * [What alternative libraries are there?](#what-alternative-libraries-are-there)
@@ -31,8 +30,17 @@ vagueTime.js provides a small, clean API
 for translating timestamps
 into those user-friendly phrases,
 heavily supported by unit tests.
-Vague time strings can be returned
-in English, German, French, Dutch, Danish, Japanese, Korean or Chinese.
+Vague time strings
+can be returned in
+English,
+German,
+French,
+Dutch,
+Danish,
+Japanese,
+Korean,
+Chinese or
+Brazilian Portuguese.
 
 ## What alternative libraries are there?
 
@@ -45,7 +53,7 @@ in English, German, French, Dutch, Danish, Japanese, Korean or Chinese.
 
 The library can be built
 with support for any combination
-of English, German, French, Dutch, Danish, Japanese, Korean and Chinese languages.
+of the supported languages.
 Single-language builds
 are typically around
 4.3 kb unminified with comments,
@@ -53,33 +61,41 @@ are typically around
 or 0.7 kb minified + gzipped.
 
 The largest build,
-containing all supported languages,
-is 8 kb unminified with comments, 3.1 kb minified
-or 1.3 kb minified + gzipped.
+containing all 10 supported languages,
+is 8.7 kb unminified with comments,
+3.4 kb minified
+or 1.4 kb minified + gzipped.
 
 ## How do I install it?
 
-Any of the following will do:
+If you're using npm:
 
 ```
 npm install vague-time
+```
 
-jam install vague-time
+Or if you just want
+the git repo:
 
-bower install vague-time
-
-component install philbooth/vagueTime.js
-
+```
 git clone git@github.com:philbooth/vagueTime.js.git
 ```
+
+If you're into
+other package managers,
+it is also
+available from
+Bower,
+Component and
+Jam.
 
 ## How do I use it?
 
 ### Loading the library
 
 If you are running in
-[Node.js][node],
-[Browserify]
+Node.js,
+Browserify
 or another CommonJS-style
 environment,
 you can `require`
@@ -91,24 +107,7 @@ var vagueTime = require('vague-time');
 
 It also the supports
 the AMD-style format
-preferred by [Require.js][require]:
-
-```javascript
-require.config({
-    paths: {
-        vague-time: 'vagueTime.js/lib/vagueTime'
-    }
-});
-
-require([ 'vague-time' ], function (vagueTime) {
-});
-```
-
-The default module
-contains all of the supported languages,
-if you want to load a custom build
-you must make sure
-that you reference that build explicitly.
+preferred by Require.j
 
 If you are
 including vagueTime.js
@@ -117,6 +116,17 @@ or neither of the above environments
 are detected,
 the interface will be globally available
 as `vagueTime`.
+
+Please note
+that the default module
+contains all 10
+supported languages.
+If you want
+to load
+a custom build,
+you must ensure
+that you reference
+that correct explicitly.
 
 ### Calling the exported functions
 
@@ -212,15 +222,16 @@ vagueTime.get({
 
 The build environment relies on
 Node.js,
-[NPM],
 [JSHint],
 [Commander]
 [Mocha],
 [Chai] and
 [UglifyJS].
-Assuming that you already have Node/NPM set up,
+Assuming that you already have
+Node.js and NPM set up,
 you just need to run `npm install`
-to install all of the dependencies as listed in `package.json`.
+to install all of the dependencies
+as listed in `package.json`.
 
 You can then lint the source module
 with the command `npm run lint`.
@@ -244,19 +255,14 @@ open `test/vagueTime.html`.
 
 [ci-image]: https://secure.travis-ci.org/philbooth/vagueTime.js.png?branch=master
 [ci-status]: http://travis-ci.org/#!/philbooth/vagueTime.js
-[vague-date]: https://github.com/philbooth/vagueDate.js
 [date]: http://www.datejs.com/
 [moment]: http://momentjs.com/
 [xdate]: http://arshaw.com/xdate
 [countdown]: http://countdownjs.org/
-[node]: http://nodejs.org/
-[browserify]: http://browserify.org/
-[require]: http://requirejs.org/
-[npm]: https://npmjs.org/
 [jshint]: https://github.com/jshint/node-jshint
 [commander]: https://github.com/visionmedia/commander.js
 [mocha]: http://visionmedia.github.com/mocha
 [chai]: http://chaijs.com/
 [uglifyjs]: https://github.com/mishoo/UglifyJS
-[license]: https://github.com/philbooth/vagueTime.js/blob/master/COPYING
+[license]: COPYING
 
