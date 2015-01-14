@@ -107,7 +107,7 @@ var vagueTime = require('vague-time');
 
 It also the supports
 the AMD-style format
-preferred by Require.j
+preferred by Require.js.
 
 If you are
 including vagueTime.js
