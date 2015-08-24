@@ -15,7 +15,7 @@ es: {
     },
 
     defaults: {
-        past: 'reciénn',
+        past: 'recién',
         future: 'dentro de poco'
     }
 }
