@@ -569,6 +569,42 @@
                     units: 'ms'
                 }), 'just now');
             });
+
+            test('get returns recién when time is 1 second ago (spanish)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234567889,
+                    units: 's',
+                    lang: 'es'
+                }), 'recién');
+            });
+
+            test('get returns hace 1 minuto when time is 60,000 milliseconds ago (spanish)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890000,
+                    to: 1234567830000,
+                    units: 'ms',
+                    lang: 'es'
+                }), 'hace 1 minuto');
+            });
+
+            test('get returns dentro de poco when time is 59 seconds ahead (spanish)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234567949,
+                    units: 's',
+                    lang: 'es'
+                }), 'dentro de poco');
+            });
+
+            test('get returns en 1 año when time is 31,557,600 seconds ahead (spanish)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1266125490,
+                    units: 's',
+                    lang: 'es'
+                }), 'en 1 año');
+            });
         });
     });
 }(typeof require === 'function' ? require : undefined));
