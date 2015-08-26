@@ -1,7 +1,7 @@
 {
     "name": "vague-time",
-    "version": "1.2.0",
-    "description": "A tiny library that formats precise time differences as a vague/fuzzy time. Supports 9 languages.",
+    "version": "1.3.0",
+    "description": "A tiny library that formats precise time differences as a vague/fuzzy time. Supports 10 languages.",
     "repo": "philbooth/vagueTime.js",
     "license": "MIT",
     "main": "lib/vagueTime.js",
