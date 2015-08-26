@@ -3,7 +3,7 @@
 A tiny JavaScript library
 that formats precise time differences
 as a vague/fuzzy time.
-Supports 9 different languages.
+Supports 10 different languages.
 
 [![Build status][ci-image]][ci-status]
 
@@ -32,15 +32,16 @@ into those user-friendly phrases,
 heavily supported by unit tests.
 Vague time strings
 can be returned in
-English,
-German,
-French,
-Dutch,
+Brazilian Portuguese,
+Chinese,
 Danish,
+Dutch,
+English,
+French,
+German,
 Japanese,
-Korean,
-Chinese or
-Brazilian Portuguese.
+Korean or
+Spanish.
 
 ## What alternative libraries are there?
 
@@ -61,7 +62,7 @@ are typically around
 0.7 kb minified+gzipped.
 
 The largest build,
-containing all 9 supported languages,
+containing all 10 supported languages,
 is 8.7 kb unminified with comments,
 3.4 kb minified or
 1.4 kb minified+gzipped.
@@ -119,7 +120,7 @@ as `vagueTime`.
 
 Please note
 that the default module
-contains all 9
+contains all 10
 supported languages.
 If you want
 to load
@@ -152,13 +153,15 @@ The arguments are passed as properties
   rather than timestamps.
 * `lang`:
   String denoting the output language.
-  May be `'en'` (English),
-  `'de'` (German),
-  `'fr'` (French),
-  `'nl'` (Dutch),
+  May be `'br'` (Brazilian Portuguese),
   `'da'` (Danish),
+  `'de'` (German),
+  `'en'` (English),
+  `'es'` (English),
+  `'fr'` (French),
   `'jp'` (Japanese),
-  `'ko'` (Korean) or
+  `'ko'` (Korean),
+  `'nl'` (Dutch) or
   `'zh'` (Chinese.
   The default is set by the build options.
 
