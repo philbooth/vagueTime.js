@@ -606,37 +606,37 @@
                 }), 'en 1 año');
             });
 
-            test('get returns just now when time is 1 second ago (Hungarian)', function () {
+            test('get returns alldeles nyss when time is 1 second ago (swedish)', function () {
                 assert.strictEqual(vagueTime.get({
                     from: 1234567890,
                     to: 1234567889,
                     units: 's',
-                    lang: 'hu'
-                }), 'most');
+                    lang: 'se'
+                }), 'alldeles nyss');
             });
 
-            test('get returns 1 minute ago when time is 60 seconds ago (Hungarian)', function () {
+            test('get returns 1 minut sedan when time is 60,000 milliseconds ago (swedish)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890000,
+                    to: 1234567830000,
+                    units: 'ms',
+                    lang: 'se'
+                }), '1 minut sedan');
+            });
+
+            test('get returns alldeles strax when time is 59 seconds ahead (swedish)', function () {
                 assert.strictEqual(vagueTime.get({
                     from: 1234567890,
-                    to: 1234567830,
+                    to: 1234567949,
                     units: 's',
-                    lang: 'hu'
-                }), '1 perce');
+                    lang: 'se'
+                }), 'alldeles strax');
             });
 
-            test('get returns 1 hour ago when time is 3,600 seconds ago (Hungarian)', function () {
+            test('get returns om 1 år when time is 31,557,600 seconds ahead (swedish)', function () {
                 assert.strictEqual(vagueTime.get({
                     from: 1234567890,
-                    to: 1234564290,
-                    units: 's',
-                    lang: 'hu'
-                }), '1 órája');
-            });
-
-            test('get returns 1 day ago when time is 86,400 seconds ago (Hungarian)', function () {
-                assert.strictEqual(vagueTime.get({
-                    from: 1234567890,
-                    to: 1234481490,
+                    to: 1266125490,
                     units: 's',
                     lang: 'hu'
                 }), '1 napja');
@@ -740,6 +740,41 @@
                     lang: 'hu'
                 }), '2 nap múlva');
             });
+
+            test('get returns alldeles nyss when time is 1 second ago (swedish)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234567889,
+                    units: 's',
+                    lang: 'se'
+                }), 'alldeles nyss');
+            });
+
+            test('get returns 1 minut sedan when time is 60,000 milliseconds ago (swedish)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890000,
+                    to: 1234567830000,
+                    units: 'ms',
+                    lang: 'se'
+                }), '1 minut sedan');
+            });
+
+            test('get returns alldeles strax when time is 59 seconds ahead (swedish)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234567949,
+                    units: 's',
+                    lang: 'se'
+                }), 'alldeles strax');
+            });
+
+            test('get returns om 1 år when time is 31,557,600 seconds ahead (swedish)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1266125490,
+                    units: 's',
+                    lang: 'se'
+                }), 'om 1 år');
         });
     });
 }(typeof require === 'function' ? require : undefined));
