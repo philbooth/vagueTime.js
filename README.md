@@ -3,7 +3,7 @@
 A tiny JavaScript library
 that formats precise time differences
 as a vague/fuzzy time.
-Supports 10 different languages.
+Supports 12 different languages.
 
 [![Build status][ci-image]][ci-status]
 
@@ -39,9 +39,11 @@ Dutch,
 English,
 French,
 German,
+Hungarian,
 Japanese,
-Korean or
-Spanish.
+Korean,
+Spanish or
+Swedish.
 
 ## What alternative libraries are there?
 
@@ -62,10 +64,10 @@ are typically around
 0.7 kb minified+gzipped.
 
 The largest build,
-containing all 10 supported languages,
-is 8.7 kb unminified with comments,
-3.4 kb minified or
-1.4 kb minified+gzipped.
+containing all 12 supported languages,
+is 11 kb unminified with comments,
+4.3 kb minified or
+1.6 kb minified+gzipped.
 
 ## How do I install it?
 
@@ -120,14 +122,14 @@ as `vagueTime`.
 
 Please note
 that the default module
-contains all 10
+contains all 12
 supported languages.
 If you want
 to load
 a custom build,
 you must ensure
 that you reference
-that correct explicitly.
+it explicitly.
 
 ### Calling the exported functions
 
