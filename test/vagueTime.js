@@ -605,7 +605,141 @@
                     lang: 'es'
                 }), 'en 1 año');
             });
+
+            test('get returns just now when time is 1 second ago (Hungarian)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234567889,
+                    units: 's',
+                    lang: 'hu'
+                }), 'most');
+            });
+
+            test('get returns 1 minute ago when time is 60 seconds ago (Hungarian)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234567830,
+                    units: 's',
+                    lang: 'hu'
+                }), '1 perce');
+            });
+
+            test('get returns 1 hour ago when time is 3,600 seconds ago (Hungarian)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234564290,
+                    units: 's',
+                    lang: 'hu'
+                }), '1 órája');
+            });
+
+            test('get returns 1 day ago when time is 86,400 seconds ago (Hungarian)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1234481490,
+                    units: 's',
+                    lang: 'hu'
+                }), '1 napja');
+            });
+
+            test('get returns 1 week ago when time is 604,800 seconds ago (Hungarian)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1233963090,
+                    units: 's',
+                    lang: 'hu'
+                }), '1 hete');
+            });
+
+            test('get returns 1 month ago when time is 2,629,800 seconds ago (Hungarian)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1231938090,
+                    units: 's',
+                    lang: 'hu'
+                }), '1 hónapja');
+            });
+
+            test('get returns 1 year ago when time is 31,557,600 seconds ago (Hungarian)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890,
+                    to: 1203010290,
+                    units: 's',
+                    lang: 'hu'
+                }), '1 éve');
+            });
+
+            test('get returns 59 minutes ago when time is 3,599,000 milliseconds ago (Hungarian)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890000,
+                    to: 1234564291000,
+                    units: 'ms',
+                    lang: 'hu'
+                }), '59 perce');
+            });
+
+            test('get returns 23 hours ago when time is 86,399,000 milliseconds ago (Hungarian)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890000,
+                    to: 1234481491000,
+                    units: 'ms',
+                    lang: 'hu'
+                }), '23 órája');
+            });
+
+            test('get returns 6 days ago when time is 604,799,000 milliseconds ago (Hungarian)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890000,
+                    to: 1233963091000,
+                    units: 'ms',
+                    lang: 'hu'
+                }), '6 napja');
+            });
+
+            test('get returns 4 weeks ago when time is 2,629,799,000 milliseconds ago (Hungarian)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890000,
+                    to: 1231938091000,
+                    units: 'ms',
+                    lang: 'hu'
+                }), '4 hete');
+            });
+
+            test('get returns 11 months ago when time is 31,557,599,000 milliseconds ago (Hungarian)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890000,
+                    to: 1203010291000,
+                    units: 'ms',
+                    lang: 'hu'
+                }), '11 hónapja');
+            });
+
+            test('get returns 2 years ago when time is 63,115,200,000 milliseconds ago (Hungarian)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 1234567890000,
+                    to: 1171452690000,
+                    units: 'ms',
+                    lang: 'hu'
+                }), '2 éve');
+            });
+
+            test('get returns in when time is 1 second in the future (Hungarian)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 0,
+                    to: 1,
+                    units: 's',
+                    lang: 'hu'
+                }), 'hamarosan');
+            });
+
+            test('get returns in 2 days when time is 172800 second in the future (Hungarian)', function () {
+                assert.strictEqual(vagueTime.get({
+                    from: 0,
+                    to: 172800,
+                    units: 's',
+                    lang: 'hu'
+                }), '2 nap múlva');
+            });
         });
     });
 }(typeof require === 'function' ? require : undefined));
-
