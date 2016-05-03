@@ -156,15 +156,17 @@ The arguments are passed as properties
 * `lang`:
   String denoting the output language.
   May be `'br'` (Brazilian Portuguese),
+  `'zh'` (Chinese).
   `'da'` (Danish),
-  `'de'` (German),
+  `'nl'` (Dutch),
   `'en'` (English),
-  `'es'` (English),
   `'fr'` (French),
+  `'de'` (German),
+  `'hu'` (Hungarian),
   `'jp'` (Japanese),
   `'ko'` (Korean),
-  `'nl'` (Dutch) or
-  `'zh'` (Chinese.
+  `'es'` (Spanish) or
+  `'se'` (Swedish).
   The default is set by the build options.
 
 Essentially,
