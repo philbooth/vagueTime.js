@@ -3,75 +3,80 @@
 A tiny JavaScript library
 that formats precise time differences
 as a vague/fuzzy time.
-Supports 12 different languages.
 
-[![Build status][ci-image]][ci-status]
+[![Build status](https://secure.travis-ci.org/philbooth/vagueTime.js.png?branch=master)](http://travis-ci.org/#!/philbooth/vagueTime.js)
 
 * [Why would I want that?](#why-would-i-want-that)
-* [What alternative libraries are there?](#what-alternative-libraries-are-there)
 * [How tiny is it?](#how-tiny-is-it)
+* [What doesn't it do?](#what-doesnt-it-do)
+* [What alternative libraries are there?](#what-alternative-libraries-are-there)
 * [How do I install it?](#how-do-i-install-it)
 * [How do I use it?](#how-do-i-use-it)
-    * [Loading the library](#loading-the-library)
-    * [Calling the exported functions](#calling-the-exported-functions)
-    * [Examples](#examples)
-* [How do I build it?](#how-do-i-build-it)
+  * [Loading the library](#loading-the-library)
+  * [Calling the exported functions](#calling-the-exported-functions)
+  * [Examples](#examples)
+* [How do I set up the dev environment?](#how-do-i-set-up-the-dev-environment)
+* [What changed between version 1.x and 2.x?](#what-changed-between-version-1x-and-2x)
 * [What license is it released under?](#what-license-is-it-released-under)
 
 ## Why would I want that?
 
 Displaying precise dates and times
-can give a website a formal and officious feel.
-Using fuzzy or vague time phrases
+can make a website feel stuffy and formal.
+Using vague or fuzzy time phrases
 like 'just now' or '3 days ago'
-can contribute to a much friendlier interface.
+can contribute to a friendlier interface.
 
 vagueTime.js provides a small, clean API
 for translating timestamps
-into those user-friendly phrases,
+into user-friendly phrases,
 heavily supported by unit tests.
-Vague time strings
-can be returned in
-Brazilian Portuguese,
-Chinese,
-Danish,
-Dutch,
-English,
-French,
-German,
-Hungarian,
-Japanese,
-Korean,
-Spanish or
-Swedish.
-
-## What alternative libraries are there?
-
-* [date.js][date];
-* [moment.js][moment];
-* [xdate];
-* [countdown.js][countdown].
 
 ## How tiny is it?
 
-The library can be built
-for any combination
-of the supported languages.
-Single-language builds
-are typically around
-4.3 kb unminified with comments,
-1.3 kb minified or
-0.7 kb minified+gzipped.
+3.2 kb unminified with comments,
+1.1 kb minified or
+0.6 kb minified+gzipped.
 
-The largest build,
-containing all 12 supported languages,
-is 11 kb unminified with comments,
-4.3 kb minified or
-1.6 kb minified+gzipped.
+## What doesn't it do?
+
+Older versions of this library
+used to include translations into languages
+other than English.
+That translation process
+was both [imperfect](https://github.com/philbooth/vagueTime.js/issues/21)
+and [a source of complexity](https://github.com/philbooth/vagueTime.js/issues/8),
+whereas the raison d'être for this library
+was to be small and simple.
+Localisation is a separate problem,
+best solved by a dedicated solution
+so, in an effort to [do one thing well](https://en.wikipedia.org/wiki/Unix_philosophy),
+I [removed the translation code]().
+It is still available
+in the [1.x branch](https://github.com/philbooth/vagueTime.js/tree/1.x) and,
+of course,
+you are welcome to fork this repo
+if you preferred things
+how they were.
+
+This library also only converts
+in one direction:
+from dates/timestamps
+to strings.
+If you're interested
+in the opposite transformation,
+look elsewhere.
+
+## What alternative libraries are there?
+
+* [date.js](http://www.datejs.com/)
+* [moment.js](http://momentjs.com/)
+* [xdate](http://arshaw.com/xdate)
+* [countdown.js](http://countdownjs.org/)
 
 ## How do I install it?
 
-If you're using npm:
+Via npm:
 
 ```
 npm install vague-time
@@ -83,14 +88,6 @@ the git repo:
 ```
 git clone git@github.com:philbooth/vagueTime.js.git
 ```
-
-If you're into
-other package managers,
-it is also
-available from
-Bower,
-Component and
-Jam.
 
 ## How do I use it?
 
@@ -120,17 +117,6 @@ are detected,
 the interface will be globally available
 as `vagueTime`.
 
-Please note
-that the default module
-contains all 12
-supported languages.
-If you want
-to load
-a custom build,
-you must ensure
-that you reference
-it explicitly.
-
 ### Calling the exported functions
 
 vagueTime.js exports a single public function, `get`,
@@ -138,7 +124,7 @@ which returns a vague time string
 based on the argument(s) that you pass it.
 
 The arguments are passed as properties
- on a single options object:
+on a single options object:
 
 * `from`:
   Timestamp or `Date` instance denoting the origin point from which the vague time will be calculated.
@@ -153,21 +139,6 @@ The arguments are passed as properties
   This property has no effect
   when `from` and `to` are `Date` instances
   rather than timestamps.
-* `lang`:
-  String denoting the output language.
-  May be `'br'` (Brazilian Portuguese),
-  `'zh'` (Chinese).
-  `'da'` (Danish),
-  `'nl'` (Dutch),
-  `'en'` (English),
-  `'fr'` (French),
-  `'de'` (German),
-  `'hu'` (Hungarian),
-  `'jp'` (Japanese),
-  `'ko'` (Korean),
-  `'es'` (Spanish) or
-  `'se'` (Swedish).
-  The default is set by the build options.
 
 Essentially,
 if `to` is less than `from`,
@@ -181,95 +152,57 @@ some point in the future.
 
 ```javascript
 vagueTime.get({
-    from: 60,
-    to: 0,
-    units: 's'
-}); // returns '1 minute ago'
+  from: 60,
+  to: 0,
+  units: 's'
+}); // returns 'a minute ago'
 
 vagueTime.get({
-    from: 0,
-    to: 60,
-    units: 's'
-}); // returns 'in 1 minute'
+  from: 0,
+  to: 3600000,
+  units: 'ms'
+}); // returns 'in an hour'
 
 vagueTime.get({
-    from: 7200,
-    to: 0,
-    units: 's'
-}); // returns '2 hours ago'
-
-vagueTime.get({
-    from: 0,
-    to: 7200,
-    units: 's',
-    lang: 'de'
-}); // returns 'vor 2 Stunden'
-
-vagueTime.get({
-    from: new Date(2015, 0, 3),
-    to: new Date(2014, 11, 31),
-    lang: 'de'
-}); // returns 'in 3 Tagen'
-
-vagueTime.get({
-    from: 0,
-    to: 259200,
-    units: 's',
-    lang: 'fr'
-}); // returns 'il y a 3 jours'
-
-vagueTime.get({
-    from: new Date(2015, 0, 27),
-    to: new Date(2014, 11, 31),
-    lang: 'fr'
-}); // returns 'dans 4 semaines'
+  from: new Date(2017, 0, 31),
+  to: new Date(2016, 10, 30)
+}); // returns '2 months ago'
 ```
 
-## How do I build it?
+## How do I set up the dev environment?
 
-The build environment relies on
-Node.js,
-[JSHint],
-[Commander]
-[Mocha],
-[Chai] and
-[UglifyJS].
-Assuming that you already have
-Node.js and NPM set up,
-you just need to run `npm install`
-to install all of the dependencies
-as listed in `package.json`.
-
-You can then lint the source module
-with the command `npm run lint`.
-
-You can run the standard build process
-with the command `npm run build`
-or run a custom build using the build script:
+Install the dependencies:
 
 ```
-./build.js -l <comma-separated list of language codes> -d <default language code>
+npm i
 ```
 
-The unit tests are in `test/vagueTime.js`.
-You can run them with the command `npm test`.
-To run the tests in a web browser,
+Lint the code:
+
+```
+npm run lint
+```
+
+Run the tests:
+
+```
+npm test
+```
+
+Or, to run the tests in a web browser,
 open `test/vagueTime.html`.
+
+## What changed between version 1.x and 2.x?
+
+Support for languages
+other than English
+was removed in release `2.0.0`.
+If you were relying on that stuff,
+I'm sorry.
+You may be interested in
+the [1.x branch](https://github.com/philbooth/vagueTime.js/tree/1.x).
 
 ## What license is it released under?
 
-[MIT][license]
-
-[ci-image]: https://secure.travis-ci.org/philbooth/vagueTime.js.png?branch=master
-[ci-status]: http://travis-ci.org/#!/philbooth/vagueTime.js
-[date]: http://www.datejs.com/
-[moment]: http://momentjs.com/
-[xdate]: http://arshaw.com/xdate
-[countdown]: http://countdownjs.org/
-[jshint]: https://github.com/jshint/node-jshint
-[commander]: https://github.com/visionmedia/commander.js
-[mocha]: http://visionmedia.github.com/mocha
-[chai]: http://chaijs.com/
-[uglifyjs]: https://github.com/mishoo/UglifyJS
-[license]: COPYING
+[MIT](COPYING)
 
