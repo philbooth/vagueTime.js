@@ -63,8 +63,9 @@
             break;
           case 2:
             value = 'a couple of';
+            /* falls through */
           default:
-            plural = 's'
+            plural = 's';
         }
 
         return action(value, time + plural);
