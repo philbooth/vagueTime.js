@@ -24,11 +24,11 @@ as a vague/fuzzy time.
 Displaying precise dates and times
 can make a website feel stuffy and formal.
 Using vague or fuzzy time phrases
-like 'just now' or '3 days ago'
+like "just now" or "3 days ago"
 can contribute to a friendlier interface.
 
 vagueTime.js provides a small, clean API
-for translating timestamps
+for converting timestamps
 into user-friendly phrases,
 heavily supported by unit tests.
 
@@ -46,12 +46,12 @@ other than English.
 That translation process
 was both [imperfect](https://github.com/philbooth/vagueTime.js/issues/21)
 and [a source of complexity](https://github.com/philbooth/vagueTime.js/issues/8),
-whereas the raison d'être for this library
+whereas the raison d'être of this library
 was to be small and simple.
 Localisation is a separate problem,
-best solved by a dedicated solution
-so, in an effort to [do one thing well](https://en.wikipedia.org/wiki/Unix_philosophy),
-I [removed the translation code]().
+better addressed by a dedicated solution.
+So, in an effort to [do one thing well](https://en.wikipedia.org/wiki/Unix_philosophy),
+the translation code was [removed](https://github.com/philbooth/vagueTime.js/commit/fb0fd502c1a0d807fc2ec89cc0a40be8beeb4893).
 It is still available
 in the [1.x branch](https://github.com/philbooth/vagueTime.js/tree/1.x) and,
 of course,
@@ -59,7 +59,7 @@ you are welcome to fork this repo
 if you preferred things
 how they were.
 
-This library also only converts
+This library only converts
 in one direction:
 from dates/timestamps
 to strings.
@@ -79,7 +79,7 @@ look elsewhere.
 Via npm:
 
 ```
-npm install vague-time
+npm i vague-time
 ```
 
 Or if you just want
@@ -151,6 +151,8 @@ some point in the future.
 ### Examples
 
 ```javascript
+const vagueTime = require('vague-time');
+
 vagueTime.get({
   from: 60,
   to: 0,
