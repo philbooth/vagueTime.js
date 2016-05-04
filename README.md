@@ -34,7 +34,7 @@ heavily supported by unit tests.
 
 ## How tiny is it?
 
-3.2 kb unminified with comments,
+3.3 kb unminified with comments,
 1.1 kb minified or
 0.6 kb minified+gzipped.
 

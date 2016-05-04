@@ -172,12 +172,12 @@
         }), 'a year ago');
       });
 
-      test('get returns 2 years ago when time is 63,115,200 seconds ago', function () {
+      test('get returns a couple of years ago when time is 63,115,200 seconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
           to: 1171452690,
           units: 's'
-        }), '2 years ago');
+        }), 'a couple of years ago');
       });
 
       test('get returns just now when time is 59,000 milliseconds ago', function () {
@@ -276,12 +276,12 @@
         }), 'a year ago');
       });
 
-      test('get returns 2 years ago when time is 63,115,200,000 milliseconds ago', function () {
+      test('get returns a couple of years ago when time is 63,115,200,000 milliseconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890000,
           to: 1171452690000,
           units: 'ms'
-        }), '2 years ago');
+        }), 'a couple of years ago');
       });
 
       test('get returns just now when times are equal', function () {

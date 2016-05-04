@@ -38,7 +38,7 @@
    *               or `s` for seconds. Defaults to `ms`.
    */
   function getVagueTime (options) {
-    var now, units, diff, action, fallback, time, value;
+    var now, units, diff, action, fallback, time, value, plural;
 
     now = Date.now();
     units = normaliseUnits(options.units);
@@ -56,11 +56,18 @@
     for (time in times) {
       if (times.hasOwnProperty(time) && diff >= times[time]) {
         value = Math.floor(diff / times[time]);
-        if (value === 1) {
-          value = time === 'hour' ? 'an' : 'a';
+        switch (value) {
+          case 1:
+            value = time === 'hour' ? 'an' : 'a';
+            plural = '';
+            break;
+          case 2:
+            value = 'a couple of';
+          default:
+            plural = 's'
         }
 
-        return action(value, time + (value > 1 ? 's' : ''));
+        return action(value, time + plural);
       }
     }
 
