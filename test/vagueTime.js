@@ -68,7 +68,7 @@
         });
       });
 
-      test('get returns just now when time is 1 second ago', function () {
+      test('get returns "just now" when time is 1 second ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
           to: 1234567889,
@@ -76,7 +76,7 @@
         }), 'just now');
       });
 
-      test('get returns just now when time is 59 seconds ago', function () {
+      test('get returns "just now" when time is 59 seconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
           to: 1234567831,
@@ -84,7 +84,7 @@
         }), 'just now');
       });
 
-      test('get returns a minute ago when time is 60 seconds ago', function () {
+      test('get returns "a minute ago" when time is 60 seconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
           to: 1234567830,
@@ -92,7 +92,7 @@
         }), 'a minute ago');
       });
 
-      test('get returns 59 minutes ago when time is 3,599 seconds ago', function () {
+      test('get returns "59 minutes ago" when time is 3,599 seconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
           to: 1234564291,
@@ -100,7 +100,7 @@
         }), '59 minutes ago');
       });
 
-      test('get returns an hour ago when time is 3,600 seconds ago', function () {
+      test('get returns "an hour ago" when time is 3,600 seconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
           to: 1234564290,
@@ -108,7 +108,7 @@
         }), 'an hour ago');
       });
 
-      test('get returns 23 hours ago when time is 86,399 seconds ago', function () {
+      test('get returns "23 hours ago" when time is 86,399 seconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
           to: 1234481491,
@@ -116,7 +116,7 @@
         }), '23 hours ago');
       });
 
-      test('get returns a day ago when time is 86,400 seconds ago', function () {
+      test('get returns "a day ago" when time is 86,400 seconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
           to: 1234481490,
@@ -124,7 +124,7 @@
         }), 'a day ago');
       });
 
-      test('get returns 6 days ago when time is 604,799 seconds ago', function () {
+      test('get returns "6 days ago" when time is 604,799 seconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
           to: 1233963091,
@@ -132,7 +132,7 @@
         }), '6 days ago');
       });
 
-      test('get returns a week ago when time is 604,800 seconds ago', function () {
+      test('get returns "a week ago" when time is 604,800 seconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
           to: 1233963090,
@@ -140,7 +140,7 @@
         }), 'a week ago');
       });
 
-      test('get returns 4 weeks ago when time is 2,629,799 seconds ago', function () {
+      test('get returns "4 weeks ago" when time is 2,629,799 seconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
           to: 1231938091,
@@ -148,7 +148,7 @@
         }), '4 weeks ago');
       });
 
-      test('get returns a month ago when time is 2,629,800 seconds ago', function () {
+      test('get returns "a month ago" when time is 2,629,800 seconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
           to: 1231938090,
@@ -156,7 +156,7 @@
         }), 'a month ago');
       });
 
-      test('get returns 11 months ago when time is 31,557,599 seconds ago', function () {
+      test('get returns "11 months ago" when time is 31,557,599 seconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
           to: 1203010291,
@@ -164,7 +164,7 @@
         }), '11 months ago');
       });
 
-      test('get returns a year ago when time is 31,557,600 seconds ago', function () {
+      test('get returns "a year ago" when time is 31,557,600 seconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
           to: 1203010290,
@@ -172,7 +172,7 @@
         }), 'a year ago');
       });
 
-      test('get returns a couple of years ago when time is 63,115,200 seconds ago', function () {
+      test('get returns "a couple of years ago" when time is 63,115,200 seconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
           to: 1171452690,
@@ -180,7 +180,7 @@
         }), 'a couple of years ago');
       });
 
-      test('get returns just now when time is 59,000 milliseconds ago', function () {
+      test('get returns "just now" when time is 59,000 milliseconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890000,
           to: 1234567831000,
@@ -188,7 +188,7 @@
         }), 'just now');
       });
 
-      test('get returns a minute ago when time is 60,000 milliseconds ago', function () {
+      test('get returns "a minute ago" when time is 60,000 milliseconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890000,
           to: 1234567830000,
@@ -196,7 +196,7 @@
         }), 'a minute ago');
       });
 
-      test('get returns 59 minutes ago when time is 3,599,000 milliseconds ago', function () {
+      test('get returns "59 minutes ago" when time is 3,599,000 milliseconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890000,
           to: 1234564291000,
@@ -204,7 +204,7 @@
         }), '59 minutes ago');
       });
 
-      test('get returns an hour ago when time is 3,600,000 milliseconds ago', function () {
+      test('get returns "an hour ago" when time is 3,600,000 milliseconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890000,
           to: 1234564290000,
@@ -212,7 +212,7 @@
         }), 'an hour ago');
       });
 
-      test('get returns 23 hours ago when time is 86,399,000 milliseconds ago', function () {
+      test('get returns "23 hours ago" when time is 86,399,000 milliseconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890000,
           to: 1234481491000,
@@ -220,7 +220,7 @@
         }), '23 hours ago');
       });
 
-      test('get returns a day ago when time is 86,400,000 milliseconds ago', function () {
+      test('get returns "a day ago" when time is 86,400,000 milliseconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890000,
           to: 1234481490000,
@@ -228,7 +228,7 @@
         }), 'a day ago');
       });
 
-      test('get returns 6 days ago when time is 604,799,000 milliseconds ago', function () {
+      test('get returns "6 days ago" when time is 604,799,000 milliseconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890000,
           to: 1233963091000,
@@ -236,7 +236,7 @@
         }), '6 days ago');
       });
 
-      test('get returns a week ago when time is 604,800,000 milliseconds ago', function () {
+      test('get returns "a week ago" when time is 604,800,000 milliseconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890000,
           to: 1233963090000,
@@ -244,7 +244,7 @@
         }), 'a week ago');
       });
 
-      test('get returns 4 weeks ago when time is 2,629,799,000 milliseconds ago', function () {
+      test('get returns "4 weeks ago" when time is 2,629,799,000 milliseconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890000,
           to: 1231938091000,
@@ -252,7 +252,7 @@
         }), '4 weeks ago');
       });
 
-      test('get returns a month ago when time is 2,629,800,000 milliseconds ago', function () {
+      test('get returns "a month ago" when time is 2,629,800,000 milliseconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890000,
           to: 1231938090000,
@@ -260,7 +260,7 @@
         }), 'a month ago');
       });
 
-      test('get returns 11 months ago when time is 31,557,599,000 milliseconds ago', function () {
+      test('get returns "11 months ago" when time is 31,557,599,000 milliseconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890000,
           to: 1203010291000,
@@ -268,7 +268,7 @@
         }), '11 months ago');
       });
 
-      test('get returns a year ago when time is 31,557,600,000 milliseconds ago', function () {
+      test('get returns "a year ago" when time is 31,557,600,000 milliseconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890000,
           to: 1203010290000,
@@ -276,7 +276,7 @@
         }), 'a year ago');
       });
 
-      test('get returns a couple of years ago when time is 63,115,200,000 milliseconds ago', function () {
+      test('get returns "a couple of years ago" when time is 63,115,200,000 milliseconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890000,
           to: 1171452690000,
@@ -284,7 +284,7 @@
         }), 'a couple of years ago');
       });
 
-      test('get returns just now when times are equal', function () {
+      test('get returns "just now" when times are equal', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
           to: 1234567890,
@@ -292,7 +292,7 @@
         }), 'just now');
       });
 
-      test('get returns soon when time is 59 seconds ahead', function () {
+      test('get returns "soon" when time is 59 seconds ahead', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
           to: 1234567949,
@@ -300,7 +300,7 @@
         }), 'soon');
       });
 
-      test('get returns in a minute when time is 60 seconds ahead', function () {
+      test('get returns "in a minute" when time is 60 seconds ahead', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
           to: 1234567950,
