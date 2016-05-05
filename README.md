@@ -73,6 +73,7 @@ look elsewhere.
 * [moment.js](http://momentjs.com/)
 * [xdate](http://arshaw.com/xdate)
 * [countdown.js](http://countdownjs.org/)
+* [javascript-time-ago](https://github.com/halt-hammerzeit/javascript-time-ago)
 
 ## How do I install it?
 
