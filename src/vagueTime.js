@@ -38,41 +38,50 @@
    *               or `s` for seconds. Defaults to `ms`.
    */
   function getVagueTime (options) {
-    var now, units, diff, action, fallback, time, value, plural;
+    var now, units, diff, action, key, value, threshold, plural;
 
     now = Date.now();
     units = normaliseUnits(options.units);
     diff = normaliseTime(options.from, units, now) - normaliseTime(options.to, units, now);
+    plural = 's';
 
     if (diff >= 0) {
       action = past;
-      fallback = 'just now';
     } else {
       diff = -diff;
       action = future;
-      fallback = 'soon';
     }
 
-    for (time in times) {
-      if (times.hasOwnProperty(time) && diff >= times[time]) {
-        value = Math.floor(diff / times[time]);
-        switch (value) {
-          case 1:
-            value = time === 'hour' ? 'an' : 'a';
-            plural = '';
-            break;
-          case 2:
-            value = 'a couple of';
-            /* falls through */
-          default:
-            plural = 's';
+    for (key in times) {
+      if (times.hasOwnProperty(key)) {
+        value = times[key];
+        threshold = value / 4;
+
+        if (diff < value / 2 - threshold) {
+          continue;
         }
 
-        return action(value, time + plural);
+        if (diff < value - threshold) {
+          value = 'half ' + singleValue(key);
+          plural = '';
+        } else {
+          value = Math.round(diff / value);
+
+          switch (value) {
+            case 1:
+              value = singleValue(key);
+              plural = '';
+              break;
+            case 2:
+              value = 'a couple of';
+          }
+        }
+
+        return action(value, key + plural);
       }
     }
 
-    return fallback;
+    return action.f;
   }
 
   function normaliseUnits (units) {
@@ -118,9 +127,15 @@
   function past (value, units) {
     return value + ' ' + units + ' ago';
   }
+  past.f = 'just now';
 
   function future (value, units) {
     return 'in ' + value + ' ' + units;
+  }
+  future.f = 'soon';
+
+  function singleValue (time) {
+    return time === 'hour' ? 'an' : 'a';
   }
 
   function exportFunctions () {
