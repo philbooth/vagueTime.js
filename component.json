@@ -1,6 +1,6 @@
 {
   "name": "vague-time",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "A tiny library that formats precise time differences as a vague/fuzzy time.",
   "repo": "philbooth/vagueTime.js",
   "license": "MIT",
