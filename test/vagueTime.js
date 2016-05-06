@@ -84,28 +84,12 @@
         }), 'just now');
       });
 
-      test('get returns "just now" when time is 14 seconds ago', function () {
-        assert.equal(vagueTime.get({
-          from: 1234567890,
-          to: 1234567876,
-          units: 's'
-        }), 'just now');
-      });
-
-      test('get returns "half a minute ago" when time is 15 seconds ago', function () {
-        assert.equal(vagueTime.get({
-          from: 1234567890,
-          to: 1234567875,
-          units: 's'
-        }), 'half a minute ago');
-      });
-
-      test('get returns "half a minute ago" when time is 44 seconds ago', function () {
+      test('get returns "just now" when time is 44 seconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
           to: 1234567846,
           units: 's'
-        }), 'half a minute ago');
+        }), 'just now');
       });
 
       test('get returns "a minute ago" when time is 45 seconds ago', function () {
@@ -228,28 +212,12 @@
         }), '3 hours ago');
       });
 
-      test('get returns "6 hours ago" when time is 21,599 seconds ago', function () {
-        assert.equal(vagueTime.get({
-          from: 1234567890,
-          to: 1234546291,
-          units: 's'
-        }), '6 hours ago');
-      });
-
-      test('get returns "half a day ago" when time is 21,600 seconds ago', function () {
-        assert.equal(vagueTime.get({
-          from: 1234567890,
-          to: 1234546290,
-          units: 's'
-        }), 'half a day ago');
-      });
-
-      test('get returns "half a day ago" when time is 64,799 seconds ago', function () {
+      test('get returns "18 hours ago" when time is 64,799 seconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
           to: 1234503091,
           units: 's'
-        }), 'half a day ago');
+        }), '18 hours ago');
       });
 
       test('get returns "a day ago" when time is 64,800 seconds ago', function () {
@@ -276,20 +244,84 @@
         }), 'a couple of days ago');
       });
 
-      test('get returns "a week ago" when time is 604,800 seconds ago', function () {
+      test('get returns "5 days ago" when time is 453,599 seconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
-          to: 1233963090,
+          to: 1234114291,
+          units: 's'
+        }), '5 days ago');
+      });
+
+      test('get returns "a week ago" when time is 453,600 seconds ago', function () {
+        assert.equal(vagueTime.get({
+          from: 1234567890,
+          to: 1234114290,
           units: 's'
         }), 'a week ago');
       });
 
-      test('get returns "a month ago" when time is 2,629,800 seconds ago', function () {
+      test('get returns "a week ago" when time is 907,199 seconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
-          to: 1231938090,
+          to: 1233660691,
+          units: 's'
+        }), 'a week ago');
+      });
+
+      test('get returns "a couple of weeks ago" when time is 907,200 seconds ago', function () {
+        assert.equal(vagueTime.get({
+          from: 1234567890,
+          to: 1233660690,
+          units: 's'
+        }), 'a couple of weeks ago');
+      });
+
+      test('get returns "3 weeks ago" when time is 1,972,349 seconds ago', function () {
+        assert.equal(vagueTime.get({
+          from: 1234567890,
+          to: 1232595541,
+          units: 's'
+        }), '3 weeks ago');
+      });
+
+      test('get returns "a month ago" when time is 1,972,350 seconds ago', function () {
+        assert.equal(vagueTime.get({
+          from: 1234567890,
+          to: 1232595540,
           units: 's'
         }), 'a month ago');
+      });
+
+      test('get returns "a month ago" when time is 3,944,699 seconds ago', function () {
+        assert.equal(vagueTime.get({
+          from: 1234567890,
+          to: 1230623191,
+          units: 's'
+        }), 'a month ago');
+      });
+
+      test('get returns "a couple of months ago" when time is 3,944,700 seconds ago', function () {
+        assert.equal(vagueTime.get({
+          from: 1234567890,
+          to: 1230623190,
+          units: 's'
+        }), 'a couple of months ago');
+      });
+
+      test('get returns "9 months ago" when time is 23,668,199 seconds ago', function () {
+        assert.equal(vagueTime.get({
+          from: 1234567890,
+          to: 1210899691,
+          units: 's'
+        }), '9 months ago');
+      });
+
+      test('get returns "a year ago" when time is 23,668,200 seconds ago', function () {
+        assert.equal(vagueTime.get({
+          from: 1234567890,
+          to: 1210899690,
+          units: 's'
+        }), 'a year ago');
       });
 
       test('get returns "a year ago" when time is 31,557,600 seconds ago', function () {
@@ -300,20 +332,20 @@
         }), 'a year ago');
       });
 
-      test('get returns "just now" when time is 14,999 milliseconds ago', function () {
+      test('get returns "just now" when time is 44,999 milliseconds ago', function () {
         assert.equal(vagueTime.get({
-          from: 14999,
+          from: 44999,
           to: 0,
           units: 'ms'
         }), 'just now');
       });
 
-      test('get returns "half a minute ago" when time is 15,000 milliseconds ago', function () {
+      test('get returns "a minute ago" when time is 45,000 milliseconds ago', function () {
         assert.equal(vagueTime.get({
-          from: 15000,
+          from: 55000,
           to: 0,
           units: 'ms'
-        }), 'half a minute ago');
+        }), 'a minute ago');
       });
 
       test('get returns "soon" when time is in 1 second', function () {
@@ -332,12 +364,12 @@
         }), 'soon');
       });
 
-      test('get returns "in half a minute" when time is 15 seconds ahead', function () {
+      test('get returns "in a minute" when time is 45 seconds ahead', function () {
         assert.equal(vagueTime.get({
           from: 0,
-          to: 15,
+          to: 45,
           units: 's'
-        }), 'in half a minute');
+        }), 'in a minute');
       });
 
       test('get accepts string arguments', function () {

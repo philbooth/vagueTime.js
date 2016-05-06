@@ -57,11 +57,15 @@
         value = times[key];
         threshold = value / 4;
 
-        if (diff < value / 2 - threshold) {
+        if (diff < threshold) {
           continue;
         }
 
         if (diff < value - threshold) {
+          if (key !== 'hour') {
+            continue;
+          }
+
           value = 'half ' + singleValue(key);
           plural = '';
         } else {
@@ -93,7 +97,11 @@
       return units;
     }
 
-    throw new Error('Invalid units');
+    fail('units');
+  }
+
+  function fail (reason) {
+    throw new Error('Invalid ' + reason);
   }
 
   function normaliseTime(time, units, defaultTime) {
@@ -106,7 +114,7 @@
     }
 
     if (isNotDate(time) && isNotTimestamp(time)) {
-      throw new Error('Invalid time');
+      fail('time');
     }
 
     if (typeof time === 'number' && units === 's') {
