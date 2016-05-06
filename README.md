@@ -155,21 +155,21 @@ some point in the future.
 const vagueTime = require('vague-time');
 
 vagueTime.get({
-  from: 60,
-  to: 0,
-  units: 's'
-}); // returns 'a minute ago'
-
-vagueTime.get({
   from: 0,
-  to: 3600000,
-  units: 'ms'
-}); // returns 'in an hour'
+  to: 60,
+  units: 's'
+}); // returns 'in a minute'
 
 vagueTime.get({
-  from: new Date(2017, 0, 31),
-  to: new Date(2016, 10, 30)
-}); // returns '2 months ago'
+  from: 1800000,
+  to: 0,
+  units: 'ms'
+}); // returns 'half an hour ago'
+
+vagueTime.get({
+  from: new Date(2016, 10, 30),
+  to: new Date(2017, 0, 31)
+}); // returns 'in a couple of months'
 ```
 
 ## How do I set up the dev environment?
