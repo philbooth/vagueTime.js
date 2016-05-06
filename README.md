@@ -155,15 +155,13 @@ some point in the future.
 const vagueTime = require('vague-time');
 
 vagueTime.get({
-  from: 0,
-  to: 60,
-  units: 's'
+  to: Date.now() + 60000
 }); // returns 'in a minute'
 
 vagueTime.get({
-  from: 1800000,
-  to: 0,
-  units: 'ms'
+  from: 1470001800,
+  to: 1470000000,
+  units: 's'
 }); // returns 'half an hour ago'
 
 vagueTime.get({
