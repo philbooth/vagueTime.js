@@ -324,12 +324,20 @@
         }), 'a year ago');
       });
 
-      test('get returns "a year ago" when time is 31,557,600 seconds ago', function () {
+      test('get returns "a year ago" when time is 47,336,399 seconds ago', function () {
         assert.equal(vagueTime.get({
           from: 1234567890,
-          to: 1203010290,
+          to: 1187231491,
           units: 's'
         }), 'a year ago');
+      });
+
+      test('get returns "a couple of years ago" when time is 47,336,400 seconds ago', function () {
+        assert.equal(vagueTime.get({
+          from: 1234567890,
+          to: 1187231490,
+          units: 's'
+        }), 'a couple of years ago');
       });
 
       test('get returns "just now" when time is 44,999 milliseconds ago', function () {
