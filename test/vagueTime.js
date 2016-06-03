@@ -411,17 +411,85 @@
       });
 
       test('`from` defaults to just now', function () {
-        assert.include(vagueTime.get({
-          to: Date.now(),
-          units: 'ms'
+        assert.equal(vagueTime.get({
+          to: Date.now()
         }), 'just now');
       });
 
       test('`to` defaults to just now', function () {
-        assert.include(vagueTime.get({
-          to: Date.now(),
-          units: 'ms'
+        assert.equal(vagueTime.get({
+          to: Date.now()
         }), 'just now');
+      });
+
+      test('`raw` returns raw data', function () {
+        assert.deepEqual(vagueTime.get({
+          from: 0,
+          to: 45,
+          units: 's',
+          raw: true
+        }), {
+          v: 1,
+          u: 'minute'
+        });
+      });
+
+      test('`raw` handles plurals correctly', function () {
+        assert.deepEqual(vagueTime.get({
+          from: 0,
+          to: 7200,
+          units: 's',
+          raw: true
+        }), {
+          v: 2,
+          u: 'hour'
+        });
+      });
+
+      test('`raw` handles halves correctly', function () {
+        assert.deepEqual(vagueTime.get({
+          from: 0,
+          to: 1800,
+          units: 's',
+          raw: true
+        }), {
+          v: 0.5,
+          u: 'hour'
+        });
+      });
+
+      test('`raw` handles past times correctly', function () {
+        assert.deepEqual(vagueTime.get({
+          from: 86400,
+          to: 0,
+          units: 's',
+          raw: true
+        }), {
+          v: -1,
+          u: 'day'
+        });
+      });
+
+      test('`raw` handles just now correctly', function () {
+        assert.deepEqual(vagueTime.get({
+          from: 0,
+          to: 0,
+          raw: true
+        }), {
+          v: -0,
+          u: null
+        });
+      });
+
+      test('`raw` handles soon correctly', function () {
+        assert.deepEqual(vagueTime.get({
+          from: 0,
+          to: 1,
+          raw: true
+        }), {
+          v: 0,
+          u: null
+        });
       });
     });
   });

@@ -24,7 +24,7 @@ as a vague/fuzzy time.
 Displaying precise dates and times
 can make a website feel stuffy and formal.
 Using vague or fuzzy time phrases
-like "just now" or "3 days ago"
+like 'just now' or '3 days ago'
 can contribute to a friendlier interface.
 
 vagueTime.js provides a small, clean API
@@ -52,7 +52,10 @@ Localisation is a separate problem,
 better addressed by a dedicated solution.
 So, in an effort to [do one thing well](https://en.wikipedia.org/wiki/Unix_philosophy),
 the translation code was [removed](https://github.com/philbooth/vagueTime.js/commit/fb0fd502c1a0d807fc2ec89cc0a40be8beeb4893).
-It is still available
+Instead there is an option, `raw`,
+which returns a translation-friendly object
+containing the raw data.
+The original translations are still available
 in the [1.x branch](https://github.com/philbooth/vagueTime.js/tree/1.x) and,
 of course,
 you are welcome to fork this repo
@@ -140,6 +143,29 @@ on a single options object:
   This property has no effect
   when `from` and `to` are `Date` instances
   rather than timestamps.
+* `raw`:
+  If this option is truthy,
+  the raw data will be returned
+  as a translation-friendly object
+  in the following format:
+
+  ```
+  {
+    v: number,
+	u: string
+  }
+  ```
+
+  Here,
+  `v` is a number
+  indicating the value
+  of the vague time
+  and `u` is a string
+  indicating the units
+  (either `'minute'`, `'hour'`, `'day'`, `'week'`, `'month'` or `'year'`).
+  If the vague time is less than a minute,
+  `v` will be `0`
+  and `u` will be null.
 
 Essentially,
 if `to` is less than `from`,
@@ -154,20 +180,30 @@ some point in the future.
 ```javascript
 const vagueTime = require('vague-time');
 
+// returns 'in a minute'
 vagueTime.get({
   to: Date.now() + 60000
-}); // returns 'in a minute'
+});
 
+// returns 'half an hour ago'
 vagueTime.get({
   from: 1470001800,
   to: 1470000000,
   units: 's'
-}); // returns 'half an hour ago'
+});
 
+// returns 'in a couple of months'
 vagueTime.get({
   from: new Date(2016, 10, 30),
   to: new Date(2017, 0, 31)
-}); // returns 'in a couple of months'
+});
+
+// returns { v: 2, u: 'month' }
+vagueTime.get({
+  from: new Date(2016, 10, 30),
+  to: new Date(2017, 0, 31),
+  raw: true
+});
 ```
 
 ## How do I set up the dev environment?
@@ -201,7 +237,8 @@ was removed in release `2.0.0`.
 If you were relying on that stuff,
 I'm sorry.
 You may be interested in
-the [1.x branch](https://github.com/philbooth/vagueTime.js/tree/1.x).
+the `raw` option
+or the [1.x branch](https://github.com/philbooth/vagueTime.js/tree/1.x).
 
 ## What license is it released under?
 

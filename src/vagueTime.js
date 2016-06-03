@@ -36,9 +36,11 @@
    *               instances, this indicates the units that they are
    *               measured in. Can be either `ms` for milliseconds
    *               or `s` for seconds. Defaults to `ms`.
+   * @option raw   Return translation-friendly raw data in the format
+   *               `{ v: value, u: units }`.
    */
   function getVagueTime (options) {
-    var now, units, diff, action, key, value, threshold, plural;
+    var now, units, diff, action, key, numericalValue, value, threshold, plural;
 
     now = Date.now();
     units = normaliseUnits(options.units);
@@ -67,9 +69,10 @@
           }
 
           value = 'half ' + singleValue(key);
+          numericalValue = 0.5;
           plural = '';
         } else {
-          value = Math.round(diff / value);
+          value = numericalValue = Math.round(diff / value);
 
           switch (value) {
             case 1:
@@ -81,8 +84,16 @@
           }
         }
 
+        if (options.raw) {
+          return translationFriendlyResult(action, numericalValue, key);
+        }
+
         return action(value, key + plural);
       }
+    }
+
+    if (options.raw) {
+      return translationFriendlyResult(action, 0, null);
     }
 
     return action.f;
@@ -144,6 +155,13 @@
 
   function singleValue (time) {
     return time === 'hour' ? 'an' : 'a';
+  }
+
+  function translationFriendlyResult (action, numericalValue, unit) {
+    return {
+      v: action === past ? -numericalValue : numericalValue,
+      u: unit
+    };
   }
 
   function exportFunctions () {
