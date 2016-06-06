@@ -83,7 +83,7 @@ look elsewhere.
 Via npm:
 
 ```
-npm i vague-time
+npm i vague-time --save
 ```
 
 Or if you just want
@@ -133,9 +133,11 @@ on a single options object:
 * `from`:
   Timestamp or `Date` instance denoting the origin point from which the vague time will be calculated.
   Defaults to `Date.now()`.
+
 * `to`:
   Timestamp or `Date` instance denoting the target point to which the vague time will be calculated.
   Defaults to `Date.now()`.
+
 * `units`:
   String denoting the units that the `from` and `to` timestamps are specified in.
   May be `'s'` for seconds or `'ms'` for milliseconds.
@@ -143,6 +145,7 @@ on a single options object:
   This property has no effect
   when `from` and `to` are `Date` instances
   rather than timestamps.
+
 * `raw`:
   If this option is truthy,
   the raw data will be returned
