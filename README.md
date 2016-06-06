@@ -152,7 +152,7 @@ on a single options object:
   ```
   {
     v: number,
-	u: string
+    u: string
   }
   ```
 
